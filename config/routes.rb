@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :form_sheets
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'home#index'
+
+  resources :form_sheets
+  resources :home do
+    collection do
+      get :signin
+      get :signup
+    end
+  end
 end

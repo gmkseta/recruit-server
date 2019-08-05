@@ -33,7 +33,7 @@
     <div class="la-anim-1"></div>
   </div>
   <!-- /Preloader -->
-  
+
 	<div class="wrapper theme-4-active pimary-color-red">
 		<!-- Top Menu Items -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -365,7 +365,9 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="#"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+								<%= link_to signin_home_index_path do %>
+                  <i class="zmdi zmdi-power"></i><span>로그인 하기</span>
+                <% end %>
 							</li>
 						</ul>
 					</li>
@@ -1307,7 +1309,7 @@
     </footer>
     <!-- /Footer -->
     </div>
-  
+
   </div>
 
   <!-- jQuery -->
