@@ -1,27 +1,16 @@
-<%= form_with(model: form_sheet, local: true) do |form| %>
-  <% if form_sheet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(form_sheet.errors.count, "error") %> prohibited this form_sheet from being saved:</h2>
-
-      <ul>
-      <% form_sheet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+<%= form_for @form_sheet do |f| %>
+  <!-- 임시로 form sheet에 대해서 edit -->
+  <div class="form-group">
+    <%= f.label :title, "제목" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="form-group">
+    <%= f.label :content, "내용" %>
+    <%= f.text_field :content, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button class="btn btn-primary">추가하기</button>
+
+  <%= f.submit %>  
 <% end %>

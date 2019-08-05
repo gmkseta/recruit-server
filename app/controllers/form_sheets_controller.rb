@@ -14,7 +14,8 @@ class FormSheetsController < ApplicationController
 
   # GET /form_sheets/new
   def new
-    @form_sheet = FormSheet.new
+    form_sheet = FormSheet.create!
+    redirect_to edit_form_sheet_path(form_sheet)    
   end
 
   # GET /form_sheets/1/edit
