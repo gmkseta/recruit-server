@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  questionable_id: 1
+  questionable_type: MyString
+
+two:
+  questionable_id: 1
+  questionable_type: MyString

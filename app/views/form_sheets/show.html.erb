@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @form_sheet.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @form_sheet.content %>
+</p>
+
+<%= link_to 'Edit', edit_form_sheet_path(@form_sheet) %> |
+<%= link_to 'Back', form_sheets_path %>
