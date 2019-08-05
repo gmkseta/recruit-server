@@ -1,0 +1,2 @@
+class FormSheet < ApplicationRecord
+end
