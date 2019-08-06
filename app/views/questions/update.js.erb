@@ -1,0 +1,6 @@
+$("#question-<%= @question.id %>").html(`
+    <div id="question-<%= @question.id %>">
+        <%= j render @question.type_under, question: @question %>
+        <%= render "questions/show_#{@question.type_under}", question: @question, disable: true %>
+    </div>
+    `)

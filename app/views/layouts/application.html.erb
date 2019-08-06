@@ -6,10 +6,10 @@
   <%= csp_meta_tag %>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- Favicon -->
+  <!-- Favicon
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+-->
   <!-- Morris Charts CSS -->
   <link href="/doodle/vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css" />
 
@@ -23,11 +23,30 @@
   <!-- Custom CSS -->
   <link href="/doodle/dist/css/style.css" rel="stylesheet" type="text/css">
 
+  <!-- jQuery -->
+  <script src="/doodle/vendors/bower_components/jquery/dist/jquery.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
 
 <body>
+		<% if notice %>
+		<div class="alert alert-primary">
+			<%= notice %>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	<% end %>
+	<% if alert %>
+		<div class="alert alert-danger">
+			<%= alert %>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	<% end %>
+
   <!-- Preloader -->
   <div class="preloader-it">
     <div class="la-anim-1"></div>
@@ -364,10 +383,14 @@
 								</ul>
 							</li>
 							<li class="divider"></li>
+							<% if current_user %>
 							<li>
 								<%= link_to signin_home_index_path do %>
                   <i class="zmdi zmdi-power"></i><span>로그인 하기</span>
                 <% end %>
+								<%= link_to destroy_user_session_path, method: :delete do %>
+									<i class="zmdi zmdi-power"></i><span>로그아웃</span>
+								<% end %>
 							</li>
               <li>
 								<%= link_to forms_home_index_path do %>
@@ -1317,8 +1340,6 @@
 
   </div>
 
-  <!-- jQuery -->
-  <script src="/doodle/vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
   <!-- Bootstrap Core JavaScript -->
   <script src="/doodle/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -1360,7 +1381,7 @@
 
   <!-- Init JavaScript -->
   <script src="/doodle/dist/js/init.js"></script>
-  <script src="/doodle/dist/js/dashboard-data.js"></script>
+<!--   <script src="/doodle/dist/js/dashboard-data.js"></script>-->
 </body>
 
 </html>

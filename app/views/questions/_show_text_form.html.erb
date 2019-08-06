@@ -1,0 +1,11 @@
+--answer start--
+<div class="form">
+    <%= form_for [question.form_sheet, Question.new] , url: answer_form_sheet_question_path(question.form_sheet, question), remote: true do |f| %>
+        <p><%= question.content %></p>
+        <%= f.fields_for :questionable, TextForm.new do |ff| %>
+            <%= ff.text_field :answer %>
+        <% end %>
+        <%= f.submit "answer" %>
+    <% end %>
+</div>
+--answer end--
