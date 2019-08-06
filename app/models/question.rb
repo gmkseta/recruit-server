@@ -4,17 +4,13 @@ class Question < ApplicationRecord
     accepts_nested_attributes_for :questionable
     enum status: [:not_answer , :answer]
     
-    
-    
+    has_many :questions, class_name: "Question", foreign_key: "parent_id"
+    belongs_to :parent, class_name: "Question", optional: true
 
+   
     def type_under
         self.questionable_type.underscore
     end
-    
-    # def questionable_attributes=(questionable_attributes, options = {})
-    #     self.questionable ||= questionable_type.constantize.new
-    #     questionable.localized.assign_attributes(questionable_attributes, options)
-    # end    
 
     
 end
