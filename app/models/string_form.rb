@@ -1,0 +1,2 @@
+class StringForm < ApplicationRecord
+end

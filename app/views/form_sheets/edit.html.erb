@@ -1,3 +1,29 @@
+<div class="panel panel-default card-view" style="position:fixed; right: 50%; bottom:10%">
+  <div class="panel-heading">
+    <div class="pull-left">
+      <h6 class="panel-title txt-dark">Fancy dropdown 1</h6>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-wrapper collapse in">
+    <div class="panel-body">
+      <div class="btn-group mt-40">
+        <div class="dropdown">
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+          Action <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" role="menu" style="top:-20vh">
+            <li><%= link_to form_sheet_questions_path(@form_sheet, {type: "TextForm"}), method: :post, remote: true  do %>단답형 <%end%></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= form_with(model: @form_sheet, local: true) do |form| %>
   <% if @form_sheet.errors.any? %>
     <div id="error_explanation">
@@ -40,14 +66,6 @@
   <% end %>
 </div>
 
-<script>
-  $(".plus").on("click",function(){
-    Rails.ajax({
-      url: '<%= form_sheet_questions_path(@form_sheet)  %>?type='+$(this).data('type'),
-      type: "post",
-    });
-  })
-</script>
 
 
 

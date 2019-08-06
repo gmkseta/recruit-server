@@ -27,6 +27,8 @@ class Formatter
     case type
     when 'TextForm'
       TextForm.new
+    when 'StringForm'
+      StringForm.new
     else
       raise 'Unsupported type of report'
     end
