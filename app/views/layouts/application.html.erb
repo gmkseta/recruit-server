@@ -52,7 +52,7 @@
     <div class="la-anim-1"></div>
   </div>
   <!-- /Preloader -->
-  
+
 	<div class="wrapper theme-4-active pimary-color-red">
 		<!-- Top Menu Items -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -385,6 +385,9 @@
 							<li class="divider"></li>
 							<% if current_user %>
 							<li>
+								<%= link_to signin_home_index_path do %>
+                  <i class="zmdi zmdi-power"></i><span>로그인 하기</span>
+                <% end %>
 								<%= link_to destroy_user_session_path, method: :delete do %>
 									<i class="zmdi zmdi-power"></i><span>로그아웃</span>
 								<% end %>
@@ -1342,7 +1345,7 @@
     </footer>
     <!-- /Footer -->
     </div>
-  
+
   </div>
 
 

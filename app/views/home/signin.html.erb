@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default card-view">
+      <div class="panel-heading">
+        <div class="pull-left">
+          <h6 class="panel-title txt-dark">로그인</h6>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="panel-wrapper collapse in">
+        <div class="panel-body">
+          <div class="form-wrap">
+            <form>
+              <div class="form-group">
+                <label class="control-label mb-10 text-left" for="example-email"><span class="help">이메일</span></label>
+                <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label class="control-label mb-10 text-left">비밀번호</label>
+                <input type="password" class="form-control" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-success">로그인</button>
+              <%= link_to signup_home_index_path do %>
+                <button type="button" class="btn btn-primary">회원가입</button>
+              <% end %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
