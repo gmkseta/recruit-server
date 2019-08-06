@@ -5,6 +5,7 @@ class Question < ApplicationRecord
     enum status: [:not_answer , :answer]
     
     
+    
 
     def type_under
         self.questionable_type.underscore
@@ -14,4 +15,6 @@ class Question < ApplicationRecord
     #     self.questionable ||= questionable_type.constantize.new
     #     questionable.localized.assign_attributes(questionable_attributes, options)
     # end    
+
+    
 end

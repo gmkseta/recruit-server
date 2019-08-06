@@ -3,19 +3,17 @@ class QuestionsController < ApplicationController
   before_action :question_params, only: :update
 
   def create
-    @question = GenerateForm.new(params, answer=0).question
+    @question = GenerateForm.new(params, answer=false).question
   end
 
   def answer
-    byebug
     @question = GenerateForm.new(params).question
   end
 
   def show
   end
   
-  def update
-    byebug
+  def update    
     @question.update(question_params)
   end
 
@@ -34,6 +32,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.fetch(:question,{}).permit(:content, :is_answer, :status, questionable_attributes: [:content, :id])
+    params.fetch(:question,{}).permit(:content, :status)
   end
 end
