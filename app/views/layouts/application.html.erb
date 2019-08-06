@@ -383,14 +383,16 @@
 								</ul>
 							</li>
 							<li class="divider"></li>
-							<% if current_user %>
 							<li>
-								<%= link_to signin_home_index_path do %>
-                  <i class="zmdi zmdi-power"></i><span>로그인 하기</span>
+                <% if user_signed_in? %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+  									<i class="zmdi zmdi-power"></i><span>로그아웃</span>
+  								<% end %>
+                <% else %>
+  								<%= link_to new_user_session_path do %>
+                    <i class="zmdi zmdi-power"></i><span>로그인 하기</span>
+                  <% end %>
                 <% end %>
-								<%= link_to destroy_user_session_path, method: :delete do %>
-									<i class="zmdi zmdi-power"></i><span>로그아웃</span>
-								<% end %>
 							</li>
               <li>
 								<%= link_to forms_home_index_path do %>

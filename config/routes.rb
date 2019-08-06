@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
 
-  
-  devise_for :users
   resources :form_sheets do
     resources :questions do
       member do
@@ -9,9 +8,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- 
-  root 'home#index'
 
   resources :home do
     collection do
@@ -20,4 +16,6 @@ Rails.application.routes.draw do
       get :forms
     end
   end
+  
+  devise_for :users
 end
