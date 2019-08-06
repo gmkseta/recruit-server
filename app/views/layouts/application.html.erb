@@ -25,7 +25,7 @@
 
 		<!-- jQuery -->
 		<script src="/doodle/vendors/bower_components/jquery/dist/jquery.min.js"></script>
-		
+
 		<%= stylesheet_link_tag    'application', media: 'all' %>
 		<%= javascript_include_tag 'application' %>
 	</head>
@@ -383,7 +383,7 @@
 									</ul>
 								</li>
 								<li class="divider"></li>
-								
+
 								<li>
 									<%= link_to signin_home_index_path do %>
 										<i class="zmdi zmdi-power"></i><span>로그인 하기</span>
@@ -392,7 +392,7 @@
 										<i class="zmdi zmdi-power"></i><span>로그아웃</span>
 									<% end %>
 								</li>
-								
+
 								<li>
 									<%= link_to forms_home_index_path do %>
 										<i class="zmdi zmdi-power"></i><span>Form 모음</span>
@@ -509,8 +509,17 @@
 									</li>
 								</ul>
 							</li>
+							<li class="divider"></li>
 							<li>
-								<a href="file-manager.html">File Manager</a>
+                <% if user_signed_in? %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+  									<i class="zmdi zmdi-power"></i><span>로그아웃</span>
+  								<% end %>
+                <% else %>
+  								<%= link_to new_user_session_path do %>
+                    <i class="zmdi zmdi-power"></i><span>로그인 하기</span>
+                  <% end %>
+                <% end %>
 							</li>
 							<li>
 								<a href="todo-tasklist.html">To Do/Tasklist</a>
@@ -1350,7 +1359,7 @@
 
 	<!-- Slimscroll JavaScript -->
 	<script src="/doodle/dist/js/jquery.slimscroll.js"></script>
-	
+
 
 	<!-- simpleWeather JavaScript -->
 	<script src="/doodle/vendors/bower_components/moment/min/moment.min.js"></script>
