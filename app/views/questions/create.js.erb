@@ -1,5 +1,5 @@
 $(".question_wrapper").append(`
-    <div id="question-<%= @question.id %>">
+    <div class="row panel-wrapper" id="question-<%= @question.id %>">
         <%= j render "questions/#{@question.type_under}/wrapper", question: @question %>    
     </div>
     `)

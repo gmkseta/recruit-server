@@ -52,7 +52,9 @@
 
 <div class="question_wrapper" id="selectable">
   <% @form_sheet.questions.not_answer.each do |question| %>
-    <%= render "questions/#{question.type_under}/wrapper", question: question %>    
+    <div class="row panel-wrapper" id="question-<%= question.id %>">
+      <%= render "questions/#{question.type_under}/wrapper", question: question %>    
+    </div>
   <% end %>
 </div>
 
@@ -75,7 +77,7 @@
         $this.find(".form-panel").none();
         $this.find(".show-panel").block();
       }
-     }
-
+     },
+     cancel: "a"   
   });
 </script>
