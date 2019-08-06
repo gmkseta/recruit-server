@@ -13,3 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+
+$.fn.none = function(){
+    this.css('display', 'none')
+}
+$.fn.block = function(){
+    this.css('display', 'block')
+}
+  

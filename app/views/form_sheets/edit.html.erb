@@ -1,4 +1,11 @@
-<div class="panel panel-default card-view" style="position:fixed; right: 50%; bottom:10%">
+<style>
+  #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting .panel{ background-color: rgb(134, 134, 134); }
+  #selectable .ui-selected .panel{ background-color: #616161; color: black; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; }
+</style>
+
+<div class="panel panel-default card-view" style="position:fixed; right: 30%; bottom:10%; z-index: 9999;">
   <div class="panel-heading">
     <div class="pull-left">
       <h6 class="panel-title txt-dark">Fancy dropdown 1</h6>
@@ -24,19 +31,9 @@
     </div>
   </div>
 </div>
+
+
 <%= form_with(model: @form_sheet, local: true) do |form| %>
-  <% if @form_sheet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(form_sheet.errors.count, "error") %> prohibited this form_sheet from being saved:</h2>
-
-      <ul>
-      <% @form_sheet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -52,21 +49,33 @@
   </div>
 <% end %>
 
-<button class ="plus" data-type="TextForm">
-  +
-</button>
 
-
-<div class="question_wrapper">
+<div class="question_wrapper" id="selectable">
   <% @form_sheet.questions.not_answer.each do |question| %>
-    <div id="question-<%= question.id %>">
-      <%= render "questions/#{question.type_under}", question: question %>
-      <%= render "questions/show_#{question.type_under}", question: question, disable: true %>
-    </div>
+    <%= render "questions/#{question.type_under}/wrapper", question: question %>    
   <% end %>
 </div>
 
 
 
 
+<script>
+  $( "#selectable" ).selectable({
+    selected: function(event, ui){
+      let $this = $(ui.selected)
+      if($this.hasClass('panel-wrapper')){
+        
+        $this.find(".form-panel").block();
+        $this.find(".show-panel").none();
+      }
+    },
+     unselected: function( event, ui ) {
+      let $this = $(ui.unselected)
+      if($this.hasClass('panel-wrapper')){
+        $this.find(".form-panel").none();
+        $this.find(".show-panel").block();
+      }
+     }
 
+  });
+</script>

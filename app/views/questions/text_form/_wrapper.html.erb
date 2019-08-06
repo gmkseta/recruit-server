@@ -1,0 +1,6 @@
+<div class="row panel-wrapper" id="question-<%= question.id %>">
+  
+  <%= render "questions/#{question.type_under}/form", question: question %>
+  <%= render "questions/#{question.type_under}/show", question: question, disable: true %>
+    
+</div>
