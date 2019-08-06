@@ -1,11 +1,12 @@
 class GenerateForm
   attr_reader :question
  
-  def initialize(form_sheet_id, type)
-    form_sheet = FormSheet.find(form_sheet_id)
-    @question= form_sheet.questions.create({questionable: Formatter.for( type)})
+  def initialize(params , answer=1)
+    form_sheet = FormSheet.find(params[:form_sheet_id])
+    
+    @question= form_sheet.questions.create({questionable: Formatter.for( params[:type]), status: answer})
+
   end
-  
 end
 
 class Formatter

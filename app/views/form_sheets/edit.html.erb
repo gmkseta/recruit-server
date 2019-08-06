@@ -1,10 +1,10 @@
-<%= form_with(model: form_sheet, local: true) do |form| %>
-  <% if form_sheet.errors.any? %>
+<%= form_with(model: @form_sheet, local: true) do |form| %>
+  <% if @form_sheet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(form_sheet.errors.count, "error") %> prohibited this form_sheet from being saved:</h2>
 
       <ul>
-      <% form_sheet.errors.full_messages.each do |message| %>
+      <% @form_sheet.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,8 +20,35 @@
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
-  
+
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<button class ="plus" data-type="TextForm">
+  +
+</button>
+
+
+<div class="question_wrapper">
+  <% @form_sheet.questions.not_answer.each do |question| %>
+    <div id="question-<%= question.id %>">
+      <%= render "questions/#{question.type_under}", question: question %>
+      <%= render "questions/show_#{question.type_under}", question: question, disable: true %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $(".plus").on("click",function(){
+    Rails.ajax({
+      url: '<%= form_sheet_questions_path(@form_sheet)  %>?type='+$(this).data('type'),
+      type: "post",
+    });
+  })
+</script>
+
+
+
+

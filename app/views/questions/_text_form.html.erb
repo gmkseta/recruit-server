@@ -1,0 +1,12 @@
+<div class="form">
+    <%= form_for [question.form_sheet, question], remote: true do |f| %>
+
+        <%= f.hidden_field :status, value: 0 %>
+
+        <%= f.text_field :content %>
+    
+        <%= f.submit %>
+    <% end %>
+    <%= link_to 'destroy', form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true %>
+</div>
+
