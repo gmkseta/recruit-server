@@ -11,11 +11,9 @@ Rails.application.routes.draw do
 
   resources :home do
     collection do
-      get :signin
-      get :signup
       get :forms
     end
   end
-  
+
   devise_for :users
 end

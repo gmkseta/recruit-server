@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_155437) do
+ActiveRecord::Schema.define(version: 2019_08_06_161405) do
 
   create_table "form_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2019_08_06_155437) do
     t.bigint "parent_id"
     t.index ["form_sheet_id"], name: "index_questions_on_form_sheet_id"
     t.index ["parent_id"], name: "index_questions_on_parent_id"
+  end
+
+  create_table "string_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
