@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get :signin
       get :signup
+      get :forms
     end
   end
 end
