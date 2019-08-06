@@ -6,7 +6,7 @@
   <%= csp_meta_tag %>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- Favicon 
+  <!-- Favicon
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 -->
@@ -46,7 +46,7 @@
 			</button>
 		</div>
 	<% end %>
-	
+
   <!-- Preloader -->
   <div class="preloader-it">
     <div class="la-anim-1"></div>
@@ -392,19 +392,11 @@
 									<i class="zmdi zmdi-power"></i><span>로그아웃</span>
 								<% end %>
 							</li>
-							<% else %>
-								<li>
-									<%= link_to new_user_registration_path do %>
-										<i class="zmdi zmdi-power"></i><span>회원 가입</span>
-								<% end %>
-								</li>
-								<li>
-									<%= link_to new_user_session_path do %>
-										<i class="zmdi zmdi-power"></i><span>로그인</span>
-									<% end %>
-								</li>
-
-							<% end %>
+              <li>
+								<%= link_to forms_home_index_path do %>
+                  <i class="zmdi zmdi-power"></i><span>Form 모음</span>
+                <% end %>
+							</li>
 						</ul>
 					</li>
 				</ul>
