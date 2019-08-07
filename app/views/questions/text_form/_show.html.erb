@@ -3,13 +3,11 @@
     <h6 class="card-title"><%= question.content %></h6>
     <div class="header-elements">
         <div class="list-icons">
-
-            
-        <button type="button" class="btn bg-blue" data-action="move"> <i class="icon-move-alt1"></i> Move </button>    
-        <button type="button" class="btn bg-blue"><i class="icon-checkmark3 "></i> Edit </button>
-        <%= link_to form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
-            <i class="icon-cross2 "></i> Delete
-        <% end %>
+            <a class="btn bg-teal-400 legitRipple" data-action="move"> <i class="icon-move-alt1"></i> Move </a>    
+            <button type="button" class="btn bg-blue form-edit" data-question="<%= question.id %>"><i class="icon-checkmark3 "></i> Edit </button>
+            <%= link_to form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
+                <i class="icon-cross2 "></i> Delete
+            <% end %>
         </div>
     </div>
     </div>
