@@ -1,61 +1,33 @@
 <%= content_for :right_sidebar do %>
   <%= render 'shared/form_sidebar' %>
 <% end %>
-  
-  <div class="card">
-    <div class="card-header header-elements-inline">
-      <h6 class="card-title">폼 시트 만들기이이이!!만들어버리기기기이이!!!</h6>
-      <div class="header-elements">
-        <div class="list-icons">
-          <a class="list-icons-item" data-action="collapse"></a>
-          <a class="list-icons-item" data-action="reload"></a>
-          <a class="list-icons-item" data-action="remove"></a>
-        </div>
+<div class="card">
+  <div class="card-header header-elements-inline">
+    <h6 class="card-title">폼 시트 만들기이이이!!만들어버리기기기이이!!!</h6>
+    <div class="header-elements">
+      <div class="list-icons">
+        <a class="list-icons-item" data-action="collapse"></a>
+        <a class="list-icons-item" data-action="reload"></a>
+        <a class="list-icons-item" data-action="remove"></a>
       </div>
     </div>
-    <div class="card-body">
-      <%= form_with(model: @form_sheet, local: true) do |form| %>
-        <div class="form-group">
-          <%= form.label :title %>
-          <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요" %>        
-        </div>
-        <div class="form-group">
-          <%= form.label :content %>
-          <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholde: "내용을 입력하세요"%>
-        </div>
-      <% end %>
-    </div>
   </div>
-
-
-<div class="question_wrapper" id="selectable">
-  <% @form_sheet.questions.not_answer.each do |question| %>
-    <div class="row panel-wrapper" id="question-<%= question.id %>">
-      <%= render "questions/#{question.type_under}/wrapper", question: question %>    
-    </div>
-  <% end %>
+  <div class="card-body">
+    <%= form_with(model: @form_sheet, local: true) do |form| %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요" %>        
+      </div>
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholde: "내용을 입력하세요"%>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-
-
-
-<script>
-  $( "#selectable" ).selectable({
-    selected: function(event, ui){
-      let $this = $(ui.selected)
-      if($this.hasClass('panel-wrapper')){
-        
-        $this.find(".form-panel").block();
-        $this.find(".show-panel").none();
-      }
-    },
-     unselected: function( event, ui ) {
-      let $this = $(ui.unselected)
-      if($this.hasClass('panel-wrapper')){
-        $this.find(".form-panel").none();
-        $this.find(".show-panel").block();
-      }
-     },
-     cancel: "a.panel-close" 
-  });
-</script>
+<% @form_sheet.questions.not_answer.each do |question| %>
+  <div class="card" id="question-<%= question.id %>">
+    <%= render "questions/#{question.type_under}/wrapper", question: question %>    
+  </div>
+<% end %>
