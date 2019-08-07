@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-sm-12 col-xs-12">
 			<div class="mb-30">
-				<h3 class="text-center txt-dark mb-10">회원가입 하기이이이</h3>
-				<h6 class="text-center nonecase-font txt-grey">정보를 입력해라아ㅏ</h6>
+				<h3 class="text-center txt-dark mb-10">회원가입</h3>
+				<h6 class="text-center nonecase-font txt-grey">회원 정보를 입력해주세요</h6>
 			</div>
 			<div class="form-wrap">
 				<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { autocomplete: "off" }) do |f| %>
@@ -11,6 +11,10 @@
           <div class="form-group">
             <%= f.label "이메일", class: "control-label mb-10" %><br />
             <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "이메일을 입력해주세요" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, class: "control-label mb-10" %><br />
+            <%= f.email_field :name, class: "form-control", placeholder: "이름을 입력해주세요" %>
           </div>
 					<div class="form-group">
             <%= f.label "비밀번호 입력", class: "pull-left control-label mb-10" %>
