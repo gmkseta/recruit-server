@@ -22,15 +22,17 @@ class TeamsController < ApplicationController
   end
 
   def edit
-  
+    
   end
 
   def update
-  
+    @team.update_attributes!(team_params)
+    redirect_to team_path(@team)
   end
 
   def destroy
-  
+    @team.destroy
+    redirect_to teams_path, notice: "팀을 삭제했습니다."
   end
 
   private
