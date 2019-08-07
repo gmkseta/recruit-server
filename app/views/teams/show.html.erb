@@ -4,8 +4,11 @@
 
 <hr>
 <%= @team.description %>
+
+
+
 <hr>
 <% if current_user == @main_captain %>
-  <%= link_to  "수정", edit_team_path(@team), class: "btn btn-outline-primary" %>
-  <%= link_to  "삭제", team_path(@team), method: :delete, class: "btn btn-outline-primary", data: {confirm: "팀을 정말 삭제하시겠습니까? \n모든 팀원이 팀에서 사라집니다."} %>
+  <%= link_to  "수정", edit_team_path(@team), class: "btn btn-outline-warning" %>
+  <%= link_to  "삭제", team_path(@team), method: :delete, class: "btn btn-outline-danger", data: {confirm: "팀을 정말 삭제하시겠습니까? \n모든 팀원이 팀에서 사라집니다."} %>
 <% end %>
