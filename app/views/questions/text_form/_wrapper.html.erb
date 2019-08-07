@@ -1,14 +1,3 @@
-<div class="card-header header-elements-inline">
-  <h6 class="card-title">Right aligned buttons</h6>
-  <div class="header-elements">
-    <div class="list-icons">
-      <a class="list-icons-item" data-action="collapse"></a>
-      <a class="list-icons-item" data-action="reload"></a>
-      <%= link_to "",form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true, class: "list-icons-item", data: {action: "remove"} %>
-    </div>
-  </div>
-</div>
-<div class="card-body">
-  <%= render "questions/#{question.type_under}/form", question: question %>
-  <%= render "questions/#{question.type_under}/show", question: question, disable: true %>
-</div>
+ 
+<%= render "questions/#{question.type_under}/form", question: question %>
+<%= render "questions/#{question.type_under}/show", question: question, disable: true %>

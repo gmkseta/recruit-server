@@ -1,10 +1,22 @@
-
-
-<%= form_for [question.form_sheet, question], remote: true do |f| %>
-
+<div class="form-wrapper" style="display:none">
+  <div class="card-header header-elements-inline" >
+    <h6 class="card-title">서술형 질문</h6>
+    <div class="header-elements">
+      <div class="list-icons">
+        <a class="list-icons-item" data-action="collapse"></a>
+        <a class="list-icons-item" data-action="reload"></a>
+          <%= link_to "",form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true, class: "list-icons-item", data: {action: "remove"} %>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <%= form_for [question.form_sheet, question], remote: true do |f| %>
     <%= f.hidden_field :status, value: 'not_answer' %>
-
-    <%= f.text_field :content %>
-
-    <%= f.submit %>
-<% end %>
+      <div class="form-group">
+        <%= f.label :title, "물음" %>
+        <%= f.text_field :content, class: "form-control" %>
+      </div>
+      <%= f.submit "수정", class:"btn btn-primary" %>  
+    <% end %>
+  </div>
+</div>
