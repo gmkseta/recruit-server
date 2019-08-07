@@ -1,0 +1,22 @@
+<h1>team index</h1>
+
+<div class="container">
+  <div class="row">
+    <% @teams.each do |team| %>
+      <div class="col-md-4">
+        <%= link_to team_path(team) do %>
+          <div class="card p-3">
+            <div class="card-header">
+              <h2 class="card-title">
+                <%= team.name %>
+              </h2>
+            </div>
+            <div class="card-body">
+                회장 : <%= team&.team_users&.captain&.first.user.email %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

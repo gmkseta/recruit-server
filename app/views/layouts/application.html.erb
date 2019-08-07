@@ -39,16 +39,16 @@
 		<script src="/limitless/assets/js/app.js"></script>
 		<script src="/limitless/assets/js/demo_pages/dashboard.js"></script>
 		<script src="/limitless/assets/js/demo_pages/jqueryui_components.js"></script>
-			
+
 		<!-- Theme JS files -->
 		<script src="/limitless/assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
 		<script src="/limitless/assets/js/plugins/extensions/jquery_ui/touch.min.js"></script>
 
-		
+
 		<script src="/limitless/assets/js/demo_pages/jqueryui_interactions.js"></script>
 		<!-- /theme JS files -->
-		
-		
+
+
 		<%= stylesheet_link_tag    'application', media: 'all' %>
 		<%= javascript_include_tag 'application' %>
 	</head>
@@ -121,7 +121,7 @@
 											<div class="font-size-sm font-weight-semibold text-uppercase mt-2">Dropbox</div>
 										</a>
 									</div>
-									
+
 									<div class="col-12 col-sm-4">
 										<a href="#" class="d-block text-default text-center ripple-dark rounded p-3">
 											<i class="icon-dribbble3 text-pink-400 icon-2x"></i>
@@ -155,7 +155,7 @@
 							<i class="icon-pulse2 mr-2"></i>
 							Activity
 						</a>
-						
+
 						<div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
 							<div class="dropdown-content-header">
 								<span class="font-size-sm line-height-sm text-uppercase font-weight-semibold">Latest activity</span>
@@ -179,7 +179,7 @@
 										<div class="mr-3">
 											<a href="#" class="btn bg-pink-400 rounded-round btn-icon"><i class="icon-paperplane"></i></a>
 										</div>
-										
+
 										<div class="media-body">
 											Special offers have been sent to subscribed users by <a href="#">Donna Gordon</a>
 											<div class="font-size-sm text-muted mt-1">36 minutes ago</div>
@@ -190,7 +190,7 @@
 										<div class="mr-3">
 											<a href="#" class="btn bg-blue rounded-round btn-icon"><i class="icon-plus3"></i></a>
 										</div>
-										
+
 										<div class="media-body">
 											<a href="#">Chris Arney</a> created a new <span class="font-weight-semibold">Design</span> branch in <span class="font-weight-semibold">Limitless</span> repository
 											<div class="font-size-sm text-muted mt-1">2 hours ago</div>
@@ -201,7 +201,7 @@
 										<div class="mr-3">
 											<a href="#" class="btn bg-purple-300 rounded-round btn-icon"><i class="icon-truck"></i></a>
 										</div>
-										
+
 										<div class="media-body">
 											Shipping cost to the Netherlands has been reduced, database updated
 											<div class="font-size-sm text-muted mt-1">Feb 8, 11:30</div>
@@ -212,7 +212,7 @@
 										<div class="mr-3">
 											<a href="#" class="btn bg-warning-400 rounded-round btn-icon"><i class="icon-comment"></i></a>
 										</div>
-										
+
 										<div class="media-body">
 											New review received on <a href="#">Server side integration</a> services
 											<div class="font-size-sm text-muted mt-1">Feb 2, 10:20</div>
@@ -223,7 +223,7 @@
 										<div class="mr-3">
 											<a href="#" class="btn bg-teal-400 rounded-round btn-icon"><i class="icon-spinner11"></i></a>
 										</div>
-										
+
 										<div class="media-body">
 											<strong>January, 2018</strong> - 1320 new users, 3284 orders, $49,390 revenue
 											<div class="font-size-sm text-muted mt-1">Feb 1, 05:46</div>
@@ -286,7 +286,7 @@
 								<h6 class="mb-0 text-white text-shadow-dark">Victoria Baker</h6>
 								<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>
 							</div>
-														
+
 							<div class="sidebar-user-material-footer">
 								<a href="#user-nav" class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle" data-toggle="collapse"><span>My account</span></a>
 							</div>
@@ -319,6 +319,14 @@
 										<span>Account settings</span>
 									</a>
 								</li>
+
+								<li class="nav-item">
+									<a href="<%= new_team_path %>" class="nav-link">
+										<i class="icon-cog5"></i>
+										<span>Create Your Team</span>
+									</a>
+								</li>
+
 								<li class="nav-item">
 									<a href="#" class="nav-link">
 										<i class="icon-switch2"></i>
@@ -1131,7 +1139,7 @@
 
 				</div>
 				<!-- /sidebar content -->
-				
+
 			</div>
 			<!-- /main sidebar -->
 			<div class="content-wrapper">
@@ -1223,9 +1231,9 @@
 				</div>
 				<!-- /footer -->
 			</div>
-			
+
 		</div>
-		
+
 	</body>
 
 </html>
