@@ -1,14 +1,24 @@
-<h1>team show</h1>
-<%= @team.name %>
-<%= @main_captain.email %>
+<div class="card card-body">
+  <div class="card-title">
+    <h2><%= @team.name %></h2>
+  </div>
+  <p class="mb-3">
+    대표 : <%= @main_captain.email %>
+  </p>
+  <hr>
+  <div class="card-text">
+    <%= @team.description %>
+  </div>
 
-<hr>
-<%= @team.description %>
+</div>
 
-
+<div class="card card-body">
+  팀원 신청 수락하는 곳
+</div>
 
 <hr>
 <% if current_user == @main_captain %>
   <%= link_to  "수정", edit_team_path(@team), class: "btn btn-outline-warning" %>
   <%= link_to  "삭제", team_path(@team), method: :delete, class: "btn btn-outline-danger", data: {confirm: "팀을 정말 삭제하시겠습니까? \n모든 팀원이 팀에서 사라집니다."} %>
 <% end %>
+

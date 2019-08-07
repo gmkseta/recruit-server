@@ -1,83 +1,32 @@
-<style>
-  #feedback { font-size: 1.4em; }
-  #selectable .ui-selecting .panel{ background-color: rgb(134, 134, 134); }
-  #selectable .ui-selected .panel{ background-color: #616161; color: black; }
-  #selectable { list-style-type: none; margin: 0; padding: 0; }
-</style>
 
-<div class="panel panel-default card-view" style="position:fixed; right: 30%; bottom:10%; z-index: 9999;">
-  <div class="panel-heading">
-    <div class="pull-left">
-      <h6 class="panel-title txt-dark">Fancy dropdown 1</h6>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-  <div class="panel-wrapper collapse in">
-    <div class="panel-body">
-      <div class="btn-group mt-40">
-        <div class="dropdown">
-          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-          Action <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" role="menu" style="top:-20vh">
-            <li><%= link_to form_sheet_questions_path(@form_sheet, {type: "TextForm"}), method: :post, remote: true  do %>단답형 <%end%></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
+<div class="card">
+  <div class="card-header header-elements-inline">
+    <h6 class="card-title">폼 시트 만들기이이이!!만들어버리기기기이이!!!</h6>
+    <div class="header-elements">
+      <div class="list-icons">
+        <a class="list-icons-item" data-action="collapse"></a>
+        <a class="list-icons-item" data-action="reload"></a>
+        <a class="list-icons-item" data-action="remove"></a>
       </div>
     </div>
   </div>
+  <div class="card-body">
+    <%= form_with(model: @form_sheet, local: true) do |form| %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요" %>        
+      </div>
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholde: "내용을 입력하세요"%>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-
-<%= form_with(model: @form_sheet, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<% @form_sheet.questions.not_answer.each do |question| %>
+  <div class="card" id="question-<%= question.id %>">
+    <%= render "questions/#{question.type_under}/wrapper", question: question %>    
   </div>
 <% end %>
 
-
-<div class="question_wrapper" id="selectable">
-  <% @form_sheet.questions.not_answer.each do |question| %>
-    <div class="row panel-wrapper" id="question-<%= question.id %>">
-      <%= render "questions/#{question.type_under}/wrapper", question: question %>    
-    </div>
-  <% end %>
-</div>
-
-
-
-
-<script>
-  $( "#selectable" ).selectable({
-    selected: function(event, ui){
-      let $this = $(ui.selected)
-      if($this.hasClass('panel-wrapper')){
-        
-        $this.find(".form-panel").block();
-        $this.find(".show-panel").none();
-      }
-    },
-     unselected: function( event, ui ) {
-      let $this = $(ui.unselected)
-      if($this.hasClass('panel-wrapper')){
-        $this.find(".form-panel").none();
-        $this.find(".show-panel").block();
-      }
-     },
-     cancel: "a.panel-close" 
-  });
-</script>
