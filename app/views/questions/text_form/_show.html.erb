@@ -24,7 +24,7 @@
                 <a href="#" class="pull-left inline-block full-screen mr-15">
                     <i class="zmdi zmdi-fullscreen"></i>
                 </a>
-                <%= link_to form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true do %>
+                <%= link_to form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true, class: "panel-close" do %>
                     <i class="zmdi zmdi-close"></i>
                 <% end %>
             </div>
