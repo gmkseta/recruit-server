@@ -4,6 +4,7 @@
       <h6 class="card-title">폼 시트 만들기이이이!!만들어버리기기기이이!!!</h6>
       <div class="header-elements">
         <div class="list-icons">
+          <%= link_to "ad", form_sheet_questions_path(@form_sheet,{type: "TextForm"}), method: :post, remote: true %>
           <a class="list-icons-item" data-action="collapse"></a>
           <a class="list-icons-item" data-action="reload"></a>
         </div>

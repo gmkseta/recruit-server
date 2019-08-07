@@ -24,12 +24,12 @@
         padding-right: 0px;
     }
     [data-action=remove]:after {
-        content: "";
-        font-size: .8125rem;
+        content: "";     
     }
-    [data-action=collapse]:after {
-        content: "";
+    [data-action=move]:after {
+        content: "";     
     }
+    
 }
 
 .selectable-card-list {
