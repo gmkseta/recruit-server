@@ -14,7 +14,6 @@
 //= require activestorage
 //= require_tree .
 
-
 $.fn.none = function(){
     this.css('display', 'none')
 }

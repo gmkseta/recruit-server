@@ -2,13 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .form-sheet-card{
-    .shadow-form .form-control::placeholder {
-        font-weight: 300;
+    
+    .shadow-form {
+        .form-control{
+            ::placeholder{
+                font-weight: 300;
+            }
+            padding-left: 0.8rem;
+            border-radius: .25rem;
+            border: 1px solid #929292;
+            border-top-color: #929292!important;
+            :focus{
+            
+                border: 1px solid #8bc34a;
+                box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+            }
+        }
+    
     }
-    .shadow-form .form-control {
-        padding-left: 0.8rem;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-        border: 1px solid #ced4da;
-        border-radius: .25rem;
+    .bg-danger{
+        padding-right: 0px;
+    }
+    [data-action=remove]:after {
+        content: "";
+        font-size: .8125rem;
+    }
+    [data-action=collapse]:after {
+        content: "";
     }
 }
+
+.selectable-card-list {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+}
+.selectable-card-list > .ui-sortable-handle,
+.selectable-card-list > .ui-selectee {
+    background-color: #f5f5f5;
+    border: 1px solid transparent; 
+}
+.selectable-card-list > .ui-sortable-handle.ui-selecting, .selectable-demo-list > .ui-sortable-handle.ui-selected,
+.selectable-card-list > .ui-selectee.ui-selecting,
+.selectable-card-list > .ui-selectee.ui-selected {
+    background-color: #03A9F4 !important;
+    border-color: #0288D1 !important;
+    color: #fff; 
+}
+.selectable-card-list > .ui-sortable-helper:first-child + li {
+    margin-top: 0; 
+}
+
+
