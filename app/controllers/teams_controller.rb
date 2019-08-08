@@ -17,8 +17,9 @@ class TeamsController < ApplicationController
   end
   
   def show
-    @main_captain = @team.team_users.captain.first.user
-    
+    @main_captain = @team.team_users&.captain&.first&.user
+    @apply_team_user = TeamUser.where(user: current_user, team: @team).first
+    @team_users = TeamUser.where(team: @team).all
   end
 
   def edit

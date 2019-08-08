@@ -1,24 +1,89 @@
 <div class="card card-body">
   <div class="card-title">
-    <h2><%= @team.name %></h2>
+    <h2><%= sanitize @team.name %></h2>
   </div>
   <p class="mb-3">
-    대표 : <%= @main_captain.email %>
+    대표 : <%= @main_captain.name %>
   </p>
   <hr>
   <div class="card-text">
-    <%= @team.description %>
+    <%= sanitize @team.description %>
   </div>
 
+  <% if current_user != @main_captain %>
+    <%= link_to "#{@apply_team_user ? '취소하기' : '신청하기' }","#", class: "btn btn-lg btn#{@team_user ? "-outline" : "" }-primary mt-5 w-50 mx-auto", id: "apply-btn" %>
+  <% end %>
 </div>
 
-<div class="card card-body">
-  팀원 신청 수락하는 곳
+<h2>관리자 권한</h2>
+<div class="card">
+  <div class="card-header header-elements-inline">
+    <h5 class="card-title">지원자 리스트</h5>
+  </div>
+  <div class="card-body">
+    <ul class="media-list">
+
+      <% @team_users.apply.each do |team_user| %>
+        <% if user = team_user.user %>
+          <li class="media">
+            <div class="mr-3">
+              <a href="#">
+                <img src="/limitless/assets/images/placeholders/placeholder.jpg" class="rounded-circle" width="40" height="40" alt="">
+              </a>
+            </div>
+
+            <div class="media-body">
+              <div class="media-title font-weight-semibold"><%= user.name %></div>
+              <span class="text-muted"><%= user.email %></span>
+            </div>
+
+            <div class="align-self-center ml-3">
+              <div class="list-icons list-icons-extended">
+                <%= link_to  "수락", '#', class: "btn btn-sm btn-primary" %>
+                <%= link_to  "거절", '#', class: "btn btn-sm btn-secondary" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <hr>
 <% if current_user == @main_captain %>
-  <%= link_to  "수정", edit_team_path(@team), class: "btn btn-outline-warning" %>
-  <%= link_to  "삭제", team_path(@team), method: :delete, class: "btn btn-outline-danger", data: {confirm: "팀을 정말 삭제하시겠습니까? \n모든 팀원이 팀에서 사라집니다."} %>
+  <%= link_to "수정", edit_team_path(@team), class: "btn btn-outline-warning" %>
+  <%= link_to "삭제", team_path(@team), method: :delete, class: "btn btn-outline-danger", data: {confirm: "팀을 정말 삭제하시겠습니까? \n모든 팀원이 팀에서 사라집니다."} %>
 <% end %>
 
+
+
+<script>
+  $("#apply-btn").on("click", function(){
+    $.get({
+        url: "<%= toggle_team_users_path(team_id: @team.id) %>"
+      }).done(function(data) {
+        if(data.is_new){
+          new PNotify({
+            // title: 'Danger notice',
+            text: "<%= @team.name %> 팀에 신청했습니다.",
+            // icon: 'icon-blocked',
+            type: 'success'
+        });
+          $("#apply-btn").html("취소하기");
+          $("#apply-btn").removeClass("btn-primary");
+          $("#apply-btn").addClass("btn-outline-primary");
+        }else{
+          new PNotify({
+            // title: 'Danger notice',
+            text: "<%= @team.name %> 팀에 신청을 취소했습니다.",
+            // icon: 'icon-blocked',
+            type: 'error'
+          });
+          $("#apply-btn").removeClass("btn-outline-primary");
+          $("#apply-btn").addClass("btn-primary");
+          $("#apply-btn").html("신청하기");
+        }
+      })
+  });
+</script>
