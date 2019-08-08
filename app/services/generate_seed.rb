@@ -14,11 +14,11 @@ class GenerateSeed
   end
 
   def self.generate_rand_apply
-    12.times do |i|
+    50.times do |i|
       u = User.all.sample
       t = Team.all.sample
       unless u.my_team?(t)
-        TeamUser.create!(user: u, team: t, role: :apply)
+        TeamUser.create!(user: u, team: t, role: :apply) unless TeamUser.where(user: u, team: t).present?
       end
     end
   end
