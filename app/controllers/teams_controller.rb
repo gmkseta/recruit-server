@@ -5,24 +5,24 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
   end
-  
+
   def new
     @team = Team.new
   end
-  
+
   def create
     @team = Team.create!(team_params)
     TeamUser.create!(team: @team, user: current_user, role: :captain)
     redirect_to team_path(@team)
   end
-  
+
   def show
-    @main_captain = @team.team_users.captain.first.user
-    
+    @apply_team_user = TeamUser.where(user: current_user, team: @team, role: :apply).first
+    @team_users = TeamUser.where(team: @team).all
   end
 
   def edit
-    
+
   end
 
   def update
@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
   def load_object
     @team = Team.find(params[:id])
   end
-  
+
   def team_params
     params.fetch(:team,{}).permit(:name, :description)
   end

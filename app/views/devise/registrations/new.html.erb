@@ -1,45 +1,58 @@
-<div class="auth-form  ml-auto mr-auto no-float">
+<div class="card p-3 col-md-8 col-sm-12 mx-auto">
+	<div class="auth-form  ml-auto mr-auto no-float">
 	<div class="row">
 		<div class="col-sm-12 col-xs-12">
 			<div class="mb-30">
 				<h3 class="text-center txt-dark mb-10">회원가입</h3>
 				<h6 class="text-center nonecase-font txt-grey">회원 정보를 입력해주세요</h6>
 			</div>
+			<hr>
 			<div class="form-wrap">
 				<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { autocomplete: "off" }) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="form-group">
-            <%= f.label "이메일", class: "control-label mb-10" %><br />
-            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "이메일을 입력해주세요" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :name, class: "control-label mb-10" %><br />
-            <%= f.email_field :name, class: "form-control", placeholder: "이름을 입력해주세요" %>
-          </div>
+					<%= render "devise/shared/error_messages", resource: resource %>
 					<div class="form-group">
-            <%= f.label "비밀번호 입력", class: "pull-left control-label mb-10" %>
-            <% if @minimum_password_length %>
-            <em class="ml-5">최소 (<%= @minimum_password_length %> 자리 이상)</em>
-            <% end %><br />
-            <%= f.password_field :password, class: "form-control", placeholder: "비밀번호를 입력해주세요" %>
+						<%= f.label :email, "이메일*", class: "control-label mb-10" %><br />
+						<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "이메일을 입력해주세요", required: true %>
 					</div>
+					
 					<div class="form-group">
-            <%= f.label "비밀번호 재입력", class: "pull-left control-label mb-10" %><br />
-            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "비밀번호를 다시 입력해주세요" %>
+						<%= f.label :name, "이름*", class: "control-label mb-10" %><br />
+						<%= f.text_field :name, class: "form-control", placeholder: "이름을 입력해주세요", required: true %>
 					</div>
+					
+					<div class="form-group">
+						<%= f.label "비밀번호 입력*", class: "pull-left control-label mb-10" %>
+						<% if @minimum_password_length %>
+						<em class="ml-5">최소 (<%= @minimum_password_length %> 자리 이상)</em>
+						<% end %><br />
+						<%= f.password_field :password, class: "form-control", placeholder: "비밀번호를 입력해주세요" %>
+					</div>
+					
+					<div class="form-group">
+						<%= f.label "비밀번호 재입력*", class: "pull-left control-label mb-10" %><br />
+						<%= f.password_field :password_confirmation, class: "form-control", placeholder: "비밀번호를 다시 입력해주세요" %>
+					</div>
+					
+					<div class="form-group">
+						<%= f.label :phone, "휴대 전화 번호", class: "control-label mb-10" %><br />
+						<%= f.text_field :phone, class: "form-control", required: true %>
+					</div>
+
 					<div class="form-group">
 						<div class="checkbox checkbox-primary pr-10 pull-left">
-							<input id="checkbox_2" required="" type="checkbox">
+							<input id="checkbox_2" required="truea" type="checkbox">
 							<label for="checkbox_2"><span class="txt-primary">약관</span>에 모두 동의합니다.</label>
 						</div>
 						<div class="clearfix"></div>
 					</div>
+					
 					<div class="form-group text-center">
-						<%= f.submit "가입하기", class: "btn btn-info btn-rounded" %>
+						<%= f.submit "가입하기", class: "btn btn-info btn-rounded btn-block" %>
 					</div>
 				<% end %>
-        <%= render "devise/shared/links" %>
+				<%= render "devise/shared/links" %>
 			</div>
 		</div>
+	</div>
 	</div>
 </div>
