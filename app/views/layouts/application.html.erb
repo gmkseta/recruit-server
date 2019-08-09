@@ -44,12 +44,13 @@
 		<script src="/limitless/assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
 		<script src="/limitless/assets/js/plugins/extensions/jquery_ui/touch.min.js"></script>
 
-
+		<script src="/limitless/assets/js/plugins/notifications/pnotify.min.js"></script>
 		<script src="/limitless/assets/js/demo_pages/jqueryui_interactions.js"></script>
 		<!-- /theme JS files -->
 		<script src="/limitless/assets/js/demo_pages/sidebar_secondary.js"></script>
-		
-		
+		<script src="/limitless/assets/js/demo_pages/extra_pnotify.js"></script>
+
+
 		<%= stylesheet_link_tag    'application', media: 'all' %>
 		<%= javascript_include_tag 'application' %>
 	</head>
@@ -83,13 +84,13 @@
 
 				<div class="content">
 					<%= yield(:right_content) %>
-					<%= yield %>					
-				</div>				
-				<%= default_yield(:footer) %>			
+					<%= yield %>
+				</div>
+				<%= default_yield(:footer) %>
 			</div>
-			
+
 			<%= yield(:right_sidebar) %>
-			
+
 		</div>
 
 	</body>
