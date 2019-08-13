@@ -51,6 +51,10 @@ var CardsDraggable = function(){
             tolerance: 'pointer',
             start: function(e, ui){
                 ui.placeholder.height(ui.item.outerHeight());
+            },
+            beforeStop: function( event, ui ) {
+              
+              console.log(cardLength());
             }
         });
     }

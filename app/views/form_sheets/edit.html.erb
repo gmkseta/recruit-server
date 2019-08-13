@@ -1,18 +1,17 @@
 
-<div class="card form-sheet-card">
+<div class="card form-sheet-car">
   <div class="card-header header-elements-inline">
     <h6 class="card-title">폼 시트 만들기이이이!!만들어버리기기기이이!!!</h6>
     <div class="header-elements">
       <div class="list-icons">
-        <%= link_to "add", question_sheet_questions_path(@question_sheet,{type: "TextForm"}), method: :post, remote: true %>
-
+        <%= link_to "ad", form_sheet_questions_path(@form_sheet,{type: "TextForm"}), method: :post, remote: true %>
         <a class="list-icons-item" data-action="collapse"></a>
         <a class="list-icons-item" data-action="reload"></a>
       </div>
     </div>
   </div>
   <div class="card-body">
-    <%= form_with(model: @question_sheet, local: true) do |form| %>
+    <%= form_with(model: @form_sheet, local: true) do |form| %>
       <div class="form-group shadow-form">
         <%= form.label :title %>
         <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요" %>
@@ -26,28 +25,21 @@
 </div>
 
 <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
-
-  <% @question_sheet.questions.each do |question| %>
-    <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>">
+  <% @form_sheet.questions.each do |question| %>
+    <div class="card form-sheet-card" id="question-<%= question.id %>">
       <%= render "questions/#{question.type_under}/wrapper", question: question %>
-
     </div>
   <% end %>
+
 </div>
 
 <script>
   $(document).on("click", ".form-edit", function(){
     $("#question-"+$(this).data('question')).find(".show-wrapper").none();
     $("#question-"+$(this).data('question')).find(".form-wrapper").block();
-  });
+  })
   $(document).on("click", ".form-show", function(){
     $("#question-"+$(this).data('question')).find(".show-wrapper").block();
     $("#question-"+$(this).data('question')).find(".form-wrapper").none();
-  });
-
-  function cardLength() {
-    return $(".sortable-card").length;
-
-  }
-
+  })
 </script>
