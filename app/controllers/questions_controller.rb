@@ -1,14 +1,14 @@
 class QuestionsController < ApplicationController
-  before_action :load_object, only: %w(update show destroy answer)
+  before_action :load_object, only: %w(update show destroy)
   before_action :question_params, only: :update
 
   def create
-    @question = GenerateForm.new(params, answer=false).question
-  end
-
-  def answer
     @question = GenerateForm.new(params).question
   end
+
+  # def answer
+  #   @question = GenerateForm.new(params).question
+  # end
 
   def show
   end

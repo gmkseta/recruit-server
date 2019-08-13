@@ -13,7 +13,6 @@
   </div>
   <div class="card-body">
     <%= form_for [question.form_sheet, question], remote: true do |f| %>
-    <%= f.hidden_field :status, value: 'not_answer' %>
       <div class="form-group shadow-form">
         <%= f.label :title, "물음" %>
         <%= f.text_field :content, class: "form-control" %>

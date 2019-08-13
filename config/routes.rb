@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   resources :form_sheets do
     resources :questions do
-      member do
-        post :answer
-      end
+      # member do
+      #   post :answer
+      # end
     end
   end
 

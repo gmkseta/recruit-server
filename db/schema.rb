@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_160148) do
+ActiveRecord::Schema.define(version: 2019_08_13_122514) do
 
   create_table "form_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_08_07_160148) do
     t.bigint "form_sheet_id"
     t.integer "priority", default: 0
     t.string "content"
-    t.integer "status", limit: 1, default: 1
     t.bigint "parent_id"
     t.index ["form_sheet_id"], name: "index_questions_on_form_sheet_id"
     t.index ["parent_id"], name: "index_questions_on_parent_id"
@@ -71,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_160148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
-    t.string "name", null: false
+    t.string "name"
     t.string "phone"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
