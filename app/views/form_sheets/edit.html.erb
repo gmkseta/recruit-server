@@ -25,7 +25,6 @@
 </div>
 
 <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
-
   <% @form_sheet.questions.not_answer.each do |question| %>
     <div class="card form-sheet-card" id="question-<%= question.id %>">
       <%= render "questions/#{question.type_under}/wrapper", question: question %>    
@@ -37,7 +36,10 @@
 <script>
   $(document).on("click", ".form-edit", function(){
     $("#question-"+$(this).data('question')).find(".show-wrapper").none();
-    $("#question-"+$(this).data('question')).find(".form-wrapper").block();
-    
+    $("#question-"+$(this).data('question')).find(".form-wrapper").block();    
+  })
+  $(document).on("click", ".form-show", function(){
+    $("#question-"+$(this).data('question')).find(".show-wrapper").block();
+    $("#question-"+$(this).data('question')).find(".form-wrapper").none();    
   })
 </script>

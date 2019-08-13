@@ -1,8 +1,5 @@
 
 $('#selectable .ui-selected').removeClass('ui-selected')
-
 $("#question-<%= @question.id %>").html(`
-    <div class="row panel-wrapper" id="question-<%= @question.id %>">
-        <%= j render "questions/#{@question.type_under}/wrapper", question: @question %>    
-    </div>
+    <%= j render "questions/#{@question.type_under}/wrapper", question: @question %>    
 `)
