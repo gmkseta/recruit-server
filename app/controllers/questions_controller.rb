@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   private
 
   def load_object
-    @form_sheet = FormSheet.find(params[:form_sheet_id])
+    @question_sheet = QuestionSheet.find(params[:question_sheet_id])
     @question = Question.find(params[:id])
   rescue Exception => e
     p e

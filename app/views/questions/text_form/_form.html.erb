@@ -5,14 +5,14 @@
       <div class="list-icons">
         <a class="list-icons-item" data-action="move"></a>
         <button type="button" class="btn bg-blue form-show" data-question="<%= question.id %>"><i class="icon-checkmark3 "></i> show </button>
-        <%= link_to form_sheet_question_path(question.form_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
+        <%= link_to question_sheet_question_path(question.question_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
             <i class="icon-cross2 mr-2"></i> Delete
         <% end %>
       </div>
     </div>
   </div>
   <div class="card-body">
-    <%= form_for [question.form_sheet, question], remote: true do |f| %>
+    <%= form_for [question.question_sheet, question], remote: true do |f| %>
       <div class="form-group shadow-form">
         <%= f.label :title, "물음" %>
         <%= f.text_field :content, class: "form-control" %>

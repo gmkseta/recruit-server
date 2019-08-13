@@ -3,15 +3,15 @@ class GenerateForm
  
   def initialize(params, answer=true)
     
-    form_sheet = FormSheet.find(params[:form_sheet_id])
+    question_sheet = QuestionSheet.find(params[:question_sheet_id])
     
     # if answer
     #   question = Question.find(params[:id])
     #   questionable = question.questionable.dup
     #   questionable.assign_attributes(question_params(params))
-    #   @question= form_sheet.questions.create(questionable: questionable, parent: question)
+    #   @question= question_sheet.questions.create(questionable: questionable, parent: question)
     # else
-    @question= form_sheet.questions.create({questionable: Formatter.for( params[:type])})
+    @question= question_sheet.questions.create({questionable: Formatter.for( params[:type])})
     # end
   rescue Exception => e
     p e

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_122514) do
+ActiveRecord::Schema.define(version: 2019_08_13_122940) do
 
-  create_table "form_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "question_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_122514) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
-  add_foreign_key "questions", "form_sheets"
+  add_foreign_key "questions", "question_sheets", column: "form_sheet_id"
   add_foreign_key "team_users", "teams"
   add_foreign_key "team_users", "users"
   add_foreign_key "users", "teams"
