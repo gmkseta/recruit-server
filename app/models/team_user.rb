@@ -7,4 +7,16 @@ class TeamUser < ApplicationRecord
   enum role: ROLES
   scope :members, -> {where(role: TEAM_MEMBERS)}
 
+  def make_color
+    case self.role
+      when 'captain'
+        color = "primary"
+      when 'executive'
+        color = "success"
+      when 'default'
+        color = "secondary"
+    end
+    return color
+  end
+
 end

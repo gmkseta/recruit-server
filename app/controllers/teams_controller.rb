@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
 
   def show
     @apply_team_user = TeamUser.where(user: current_user, team: @team, role: :apply).first
-    @team_users = TeamUser.where(team: @team).all
+    @team_users = TeamUser.where(team: @team).all.order(role: :desc)
   end
 
   def edit

@@ -30,6 +30,7 @@
 
         <% @team_users.members.each do |team_user| %>
           <% if user = team_user.user %>
+
             <li class="media">
               <div class="mr-3">
                 <a href="#">
@@ -42,9 +43,16 @@
                 <span class="text-muted"><%= user.email %></span>
               </div>
 
-              <div class="align-self-center ml-3">
-                <span class="btn btn-success"><%= team_user.role %></span>
+              <div class="align-self-center ml-3 dropdown">
+                <span class="btn btn-<%= team_user.make_color %> dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= team_user.role %></span>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <% TeamUser::TEAM_MEMBERS.reverse.each do |role| %>
+                    <%= link_to "#{role.upcase}", change_role_team_user_path(team_user, role: role), class: "role-button dropdown-item #{role.to_s == team_user.role.to_s ? "bg-#{team_user.make_color}" : "" }", id: "team_user_#{team_user.id}_role_#{role}" %>
+                  <% end %>
+                </div>
               </div>
+
+
             </li>
           <% end %>
         <% end %>

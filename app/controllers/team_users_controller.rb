@@ -18,7 +18,8 @@ class TeamUsersController < ApplicationController
   end
 
   def change_role
-    params[:role]
+    @team_user.update_attributes(role: params[:role])
+    redirect_back(fallback_location: root_path)
   end
 
   def accept
