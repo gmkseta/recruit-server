@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   root 'home#index'
 
   patch 'question_sheets/position' => 'question_sheets#position'
+  
   resources :question_sheets do
     resources :questions
     resources :answer_sheets
   end
+
   resources :answers
 
   resources :home do
@@ -25,7 +27,6 @@ Rails.application.routes.draw do
       get :refuse
     end
   end
-
 
   devise_for :users
 end

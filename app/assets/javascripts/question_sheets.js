@@ -54,22 +54,21 @@ var CardsDraggable = function(){
                 ui.placeholder.height(ui.item.outerHeight());
             },
             beforeStop: function( event, ui ) {
-              index_info = {
-                priority: $.map($(".sortable-card"),function(v,i){
-                  return [{id:$(v).data('question-id'), priority: i}]
-                })
-              }
+              index_info = $.map($(".sortable-card"),function(v,i){
+                return [[$(v).data('question-id'),{ priority: i}]]
+              })
+
 
               Rails.ajax({
                 url: "/question_sheets/position",
                 type: "patch",
-                data: $.param(index_info)
+                data: $.param({position: JSON.stringify(index_info)})
               })
-              //$(".sortable-card").each(function(index) {
-              //  console.log($(this), index, $(".sortable-card").length);
-                // question_id =
-                // Rails.ajax
-              //});
+            //$(".sortable-card").each(function(index) {
+            //  console.log($(this), index, $(".sortable-card").length);
+            // question_id =
+            // Rails.ajax
+            //});
             }
         });
     }

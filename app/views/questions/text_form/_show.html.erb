@@ -1,28 +1,27 @@
 <% edit ||=false %>
 <div class="show-wrapper" style="display:block">
     <div class="card-header header-elements-inline">
-    <h6 class="card-title"><%= question.content %></h6>
-    <div class="header-elements">
-        <% if edit %>
-            <div class="list-icons">
-                <a class="btn bg-teal-400 legitRipple" data-action="move"> <i class="icon-move-alt1"></i> Move </a>
-                <button type="button" class="btn bg-blue form-edit" data-question="<%= question.id %>"><i class="icon-checkmark3 "></i> Edit </button>
-                <%= link_to question_sheet_question_path(question.question_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
-                    <i class="icon-cross2 "></i> Delete
+        <h6 class="card-title"><%= question.content %></h6>
+        <div class="header-elements">
+            <% if edit %>
+                <div class="list-icons">
+                    <a class="btn bg-teal-400 legitRipple" data-action="move"> <i class="icon-move-alt1"></i> Move </a>
+                    <button type="button" class="btn bg-blue form-edit" data-question="<%= question.id %>"><i class="icon-checkmark3 "></i> Edit </button>
+                    <%= link_to question_sheet_question_path(question.question_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
+                        <i class="icon-cross2"></i> Delete
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="card-body">
+        <%= form_for answer, remote: true do |f| %>
+            <div class="form-group shadow-form">
+                <%= f.label :answerable, "답변" %>
+                <%= f.fields_for :answerable, TextForm.new do |ff| %>
+                    <%= ff.text_area :answer ,rows:3, cols:3, class: "form-control", :placeholder => "답변을 입력하세요"%>
                 <% end %>
             </div>
         <% end %>
-    </div>
-    </div>
-    <div class="card-body">
-
-    <%= form_for answer, remote: true do |f| %>
-        <div class="form-group shadow-form">
-            <%= f.label :answerable, "답변" %>
-            <%= f.fields_for :answerable, TextForm.new do |ff| %>
-                <%= ff.text_area :answer ,rows:3, cols:3, class: "form-control", :placeholder => "답변을 입력하세요"%>
-            <% end %>
-        </div>
-    <% end %>
     </div>
 </div>

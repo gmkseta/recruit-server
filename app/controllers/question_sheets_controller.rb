@@ -1,6 +1,6 @@
 class QuestionSheetsController < ApplicationController
   before_action :set_question_sheet, only: [:show, :edit, :update, :destroy]
-
+  
   def index
     @question_sheets = QuestionSheet.all
   end
@@ -15,7 +15,7 @@ class QuestionSheetsController < ApplicationController
   end
 
   def position
-    Question.update(*params.fetch(:priority,{}).permit!().values.map{|l| [l["id"], l.except("id")]}.transpose())
+    Question.update(*position_params)
   end
 
   def create
@@ -60,5 +60,8 @@ class QuestionSheetsController < ApplicationController
 
     def question_sheet_params
       params.require(:question_sheet).permit(:title, :content)
+    end
+    def position_params
+      JSON.parse(params.permit(:position)["position"]).transpose()
     end
 end
