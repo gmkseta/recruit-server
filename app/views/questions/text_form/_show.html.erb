@@ -5,7 +5,7 @@
     <div class="header-elements">
         <% if edit %>
             <div class="list-icons">
-                <a class="btn bg-teal-400 legitRipple" data-action="move" onclick="cardLength()"> <i class="icon-move-alt1"></i> Move </a>    
+                <a class="btn bg-teal-400 legitRipple" data-action="move"> <i class="icon-move-alt1"></i> Move </a>
                 <button type="button" class="btn bg-blue form-edit" data-question="<%= question.id %>"><i class="icon-checkmark3 "></i> Edit </button>
                 <%= link_to question_sheet_question_path(question.question_sheet, question), method: :delete, remote: true, class: "btn btn-light bg-danger", data: {action: "remove"} do %>
                     <i class="icon-cross2 "></i> Delete
@@ -15,13 +15,15 @@
     </div>
     </div>
     <div class="card-body">
-    <%= form_for [question.question_sheet, Question.new] , url: answer_question_sheet_question_path(question.question_sheet, question), remote: true do |f| %>
+  <!--  <#%= form_for [question.question_sheet, Question.new] , url: answer_question_sheet_question_path(question.question_sheet, question), remote: true do |f| %>
         <div class="form-group shadow-form">
-            <%= f.label :questionable, "답변" %>
-            <%= f.fields_for :questionable, TextForm.new do |ff| %>
-                <%= ff.text_area :answer ,rows:3, cols:3, class: "form-control", :placeholder => "답변을 입력하세요"%>
-            <% end %>
+            <#%= f.label :questionable, "답변" %>
+            <#%= f.fields_for :questionable, TextForm.new do |ff| %>
+                <#%= ff.text_area :answer ,rows:3, cols:3, class: "form-control", :placeholder => "답변을 입력하세요"%>
+            <#% end %>
         </div>
-    <% end %>
+    <#% end %>
+
+    -->
     </div>
 </div>

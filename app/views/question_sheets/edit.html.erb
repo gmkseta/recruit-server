@@ -28,7 +28,7 @@
 <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
 
   <% @question_sheet.questions.each do |question| %>
-    <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>">
+    <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>" data-question-id="<%= question.id %>">
       <%= render "questions/#{question.type_under}/wrapper", question: question %>
 
     </div>
@@ -45,9 +45,5 @@
     $("#question-"+$(this).data('question')).find(".form-wrapper").none();
   });
 
-  function cardLength() {
-    return $(".sortable-card").length;
-
-  }
 
 </script>
