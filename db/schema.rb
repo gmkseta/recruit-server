@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_130032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
-    t.string "name"
+    t.string "name", null: false
     t.string "phone"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -30,6 +30,7 @@ var JqueryUiInteractions = function() {
     }
 }();
 var CardsDraggable = function(){
+    let index_info = [];
     var _componentSortable = function() {
         if (!$().sortable) {
             console.warn('Warning - jquery_ui.js components are not loaded.');
@@ -51,6 +52,24 @@ var CardsDraggable = function(){
             tolerance: 'pointer',
             start: function(e, ui){
                 ui.placeholder.height(ui.item.outerHeight());
+            },
+            beforeStop: function( event, ui ) {
+              index_info = {
+                priority: $.map($(".sortable-card"),function(v,i){
+                  return [{id:$(v).data('question-id'), priority: i}]
+                })
+              }
+
+              Rails.ajax({
+                url: "/question_sheets/position",
+                type: "patch",
+                data: $.param(index_info)
+              })
+              //$(".sortable-card").each(function(index) {
+              //  console.log($(this), index, $(".sortable-card").length);
+                // question_id =
+                // Rails.ajax
+              //});
             }
         });
     }

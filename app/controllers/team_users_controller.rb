@@ -17,8 +17,12 @@ class TeamUsersController < ApplicationController
     end
   end
 
+  def change_role
+    params[:role]
+  end
+
   def accept
-    @team_user.default!
+    @team_user.executive!
   end
 
   def refuse

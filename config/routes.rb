@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  patch 'question_sheets/position' => 'question_sheets#position'
   resources :question_sheets do
     resources :questions
     resources :answer_sheets

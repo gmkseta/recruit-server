@@ -7,10 +7,19 @@ class QuestionSheetsController < ApplicationController
 
   def new
     question_sheet = QuestionSheet.create!
-    redirect_to edit_question_sheet_path(question_sheet)    
+    redirect_to edit_question_sheet_path(question_sheet)
+  end
+
+
+  def edit
+  end
+
+  def position
+    Question.update(*params.fetch(:priority,{}).permit!().values.map{|l| [l["id"], l.except("id")]}.transpose())
   end
 
   def create
+    byebug
     @question_sheet = QuestionSheet.new(question_sheet_params)
 
     respond_to do |format|
