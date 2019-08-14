@@ -18,7 +18,7 @@
 </div>
 
 <% if current_user.captain?(@team) %>
-  <h2>관리자 권한</h2>
+  <h2>팀원 관리 - 대표 권한</h2>
 
   <!-- 팀원 리스트 -->
   <div class="card">
@@ -111,8 +111,8 @@
               </div>
 
               <div class="align-self-center ml-3">
-                <%= link_to  "거절 리스트에서 제거하기", team_user_path(team_user), method: :delete, class: "btn btn-sm btn-primary", remote: true %>
-                <span class="btn btn-sm btn-secondary">신청 거절됨</span>
+                <%= link_to  "제거", team_user_path(team_user), method: :delete, class: "btn btn-sm btn-primary", remote: true %>
+                <span class="btn btn-sm btn-secondary">거절됨</span>
               </div>
             </li>
           <% end %>
