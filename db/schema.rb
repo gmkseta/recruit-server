@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_123948) do
+ActiveRecord::Schema.define(version: 2019_08_13_130032) do
+
+  create_table "answer_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "question_sheet_id"
+    t.integer "total_score", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_sheet_id"], name: "index_answer_sheets_on_question_sheet_id"
+  end
+
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "answer_sheet_id"
+    t.bigint "question_id"
+    t.integer "answerable_id"
+    t.string "answerable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_sheet_id"], name: "index_answers_on_answer_sheet_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "question_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -26,9 +45,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_123948) do
     t.datetime "updated_at", null: false
     t.integer "priority", default: 0
     t.string "content"
-    t.bigint "parent_id"
     t.bigint "question_sheet_id"
-    t.index ["parent_id"], name: "index_questions_on_parent_id"
     t.index ["question_sheet_id"], name: "index_questions_on_question_sheet_id"
   end
 
@@ -78,6 +95,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_123948) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
+  add_foreign_key "answer_sheets", "question_sheets"
+  add_foreign_key "answers", "answer_sheets"
+  add_foreign_key "answers", "questions"
   add_foreign_key "team_users", "teams"
   add_foreign_key "team_users", "users"
   add_foreign_key "users", "teams"

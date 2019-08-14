@@ -6,13 +6,6 @@ class QuestionsController < ApplicationController
     @question = GenerateForm.new(params).question
   end
 
-  # def answer
-  #   @question = GenerateForm.new(params).question
-  # end
-
-  def show
-  end
-  
   def update    
     @question.update(question_params)
   end

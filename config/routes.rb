@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :question_sheets do
-    resources :questions do
-      # member do
-      #   post :answer
-      # end
-    end
+    resources :questions
+    resources :answer_sheets
   end
+  resources :answers
 
   resources :home do
     collection do
