@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1
+  additive_mean: 1.5
+  comment: MyText
+  answer: one
+
+two:
+  score: 1
+  additive_mean: 1.5
+  comment: MyText
+  answer: two

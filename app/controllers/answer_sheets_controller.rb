@@ -11,9 +11,8 @@ class AnswerSheetsController < ApplicationController
   end
 
   def create
-    answer_sheet = @question_sheet.answer_sheets.create!(set_params)
-    answer_sheet.update_attributes!(user_id: current_user.id)
-    redirect_to question_sheet_answer_sheet_path(@question_sheet, answer_sheet)
+    answer_sheet = @question_sheet.answer_sheets.create(set_params.merge({user: current_user}))
+    redirect_to [@question_sheet, answer_sheet]
   end
 
   def show

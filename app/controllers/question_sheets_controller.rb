@@ -7,7 +7,7 @@ class QuestionSheetsController < ApplicationController
   end
 
   def new
-    question_sheet = QuestionSheet.create!
+    question_sheet = QuestionSheet.create(team: current_user.team)
     redirect_to edit_question_sheet_path(question_sheet)
   end
 
@@ -19,31 +19,9 @@ class QuestionSheetsController < ApplicationController
     Question.update(*position_params)
   end
 
-  def create
-    @question_sheet = QuestionSheet.new(question_sheet_params)
-
-    respond_to do |format|
-      if @question_sheet.save
-        format.html { redirect_to @question_sheet, notice: 'Form sheet was successfully created.' }
-        format.json { render :show, status: :created, location: @question_sheet }
-      else
-        format.html { render :new }
-        format.json { render json: @question_sheet.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def update
     @question_sheet.update_attributes(question_sheet_params)
-    # respond_to do |format|
-      # if @question_sheet.update(question_sheet_params)
-        # format.html { redirect_to @question_sheet, notice: 'Form sheet was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @question_sheet }
-      # else
-      #   format.html { render :edit }
-      #   format.json { render json: @question_sheet.errors, status: :unprocessable_entity }
-      # end
-    # end
   end
 
   def destroy

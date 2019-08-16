@@ -63,6 +63,8 @@
 
 	</head>
 	<body>
+	
+	<%= any_login_here if defined?(AnyLogin) %>
 		<% if notice %>
 			<div class="alert alert-primary">
 				<%= notice %>

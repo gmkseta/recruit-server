@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_092657) do
+ActiveRecord::Schema.define(version: 2019_08_16_134222) do
+
+  create_table "answer_scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "score"
+    t.float "additive_mean"
+    t.text "comment"
+    t.bigint "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_answer_scores_on_answer_id"
+  end
 
   create_table "answer_sheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "question_sheet_id"
@@ -94,7 +104,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_092657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
-    t.string "name", null: false
+    t.string "name"
     t.string "phone"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -102,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_092657) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
+  add_foreign_key "answer_scores", "answers"
   add_foreign_key "answer_sheets", "question_sheets"
   add_foreign_key "answer_sheets", "users"
   add_foreign_key "answers", "answer_sheets"
