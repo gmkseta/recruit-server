@@ -1,0 +1,35 @@
+<div class="card form-sheet-card">
+  <div class="card-header header-elements-inline">
+    <h6 class="card-title">
+      <b><%= @team.name %></b>의 질문 폼입니다.
+    </h6>
+  </div>
+  <div class="card-body">
+    <div class="form-group shadow-form">
+      <h6> 제목 : <%= @question_sheet.title %></h6>
+      <p> 내용 : <%= @question_sheet.content %></p>
+    </div>
+  </div>
+</div>
+<hr>
+
+<div>
+  <h3>제출한 답변</h3>
+  <h4>작성자 : <%= User.find(@answer_sheet.user_id).email %></h4>
+  <div class="card p-4">
+    <h4>총점수</h4>
+    <%= @answer_sheet.total_score %>
+  </div>
+  <% @answer_sheet.answers.each do |answer| %>
+    <div class="card form-sheet-card p-3">
+      <h4><%= answer.question.content %></h4>
+      <hr>
+      <div class="card-body">
+        <%= render 'answer', answer: answer %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+</div>

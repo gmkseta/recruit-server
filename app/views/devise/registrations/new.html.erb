@@ -1,5 +1,5 @@
-<div class="card p-3 col-md-8 col-sm-12 mx-auto">
-	<div class="auth-form  ml-auto mr-auto no-float">
+<div class="card p-3 col-md-8 col-sm-12 mx-auto mt-3 pb-5">
+	<div class="auth-form mx-5 no-float">
 	<div class="row">
 		<div class="col-sm-12 col-xs-12">
 			<div class="mb-30">
@@ -14,12 +14,12 @@
 						<%= f.label :email, "이메일*", class: "control-label mb-10" %><br />
 						<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "이메일을 입력해주세요", required: true %>
 					</div>
-					
+
 					<div class="form-group">
 						<%= f.label :name, "이름*", class: "control-label mb-10" %><br />
 						<%= f.text_field :name, class: "form-control", placeholder: "이름을 입력해주세요", required: true %>
 					</div>
-					
+
 					<div class="form-group">
 						<%= f.label "비밀번호 입력*", class: "pull-left control-label mb-10" %>
 						<% if @minimum_password_length %>
@@ -27,12 +27,12 @@
 						<% end %><br />
 						<%= f.password_field :password, class: "form-control", placeholder: "비밀번호를 입력해주세요" %>
 					</div>
-					
+
 					<div class="form-group">
 						<%= f.label "비밀번호 재입력*", class: "pull-left control-label mb-10" %><br />
 						<%= f.password_field :password_confirmation, class: "form-control", placeholder: "비밀번호를 다시 입력해주세요" %>
 					</div>
-					
+
 					<div class="form-group">
 						<%= f.label :phone, "휴대 전화 번호", class: "control-label mb-10" %><br />
 						<%= f.text_field :phone, class: "form-control", required: true %>
@@ -45,11 +45,12 @@
 						</div>
 						<div class="clearfix"></div>
 					</div>
-					
+
 					<div class="form-group text-center">
 						<%= f.submit "가입하기", class: "btn btn-info btn-rounded btn-block" %>
 					</div>
 				<% end %>
+				<hr>
 				<%= render "devise/shared/links" %>
 			</div>
 		</div>

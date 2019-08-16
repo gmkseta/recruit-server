@@ -1,0 +1,7 @@
+
+<%= render "#{question.type_under}/form", question: question %>
+
+<%= form_for question.build_answer do |f| %>
+<%= render "#{question.type_under}/show", f: f, edit: true %>
+<% end %>
+<!--<#%= render "#{question.type_under}/show", question: question, answer: question.build_answer, edit: true %>-->

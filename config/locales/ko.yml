@@ -13,6 +13,9 @@ ko:
       team:
         name: 이름
         description: 설명
+      question_sheet:
+        start_date: 입력 시작 날짜
+        end_date: 입력 마감 날짜
   teams:
     new:
       title_place: "팀을 만들어주세요!"
@@ -27,7 +30,7 @@ ko:
     - 금
     - 토
     abbr_month_names:
-    - 
+    -
     - 1월
     - 2월
     - 3월
@@ -53,7 +56,7 @@ ko:
       long: "%Y년 %m월 %d일 (%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1월
     - 2월
     - 3월

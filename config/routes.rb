@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   patch 'question_sheets/position' => 'question_sheets#position'
-  
+
   resources :question_sheets do
     resources :questions
     resources :answer_sheets
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :toggle
     end
     member do
+      get :change_role
       get :accept
       get :refuse
     end

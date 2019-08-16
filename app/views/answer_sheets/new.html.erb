@@ -1,0 +1,26 @@
+<div class="card form-sheet-card">
+  <div class="card-header header-elements-inline">
+    <h6 class="card-title">
+      <b><%= @team.name %></b>의 질문 폼입니다.
+    </h6>
+  </div>
+  <div class="card-body">
+    <div class="form-group shadow-form">
+      <h6> 제목 : <%= @question_sheet.title %></h6>
+      <p> 내용 : <%= @question_sheet.content %></p>
+    </div>
+  </div>
+</div>
+<hr>
+
+<%= form_for [@question_sheet, @answer_sheet] do |f|  %>
+  <%= f.fields_for :answers do |ff| %>
+    <div class="card form-sheet-card">
+        <%= render "#{ff.object.question.type_under}/show", f: ff %>
+    </div>
+    <%= ff.hidden_field :question_id, value: ff.object.question.id %>
+  <% end  %>
+
+  <%= f.submit "답변 제출하기", class: "btn btn-primary" %>
+
+<% end %>
