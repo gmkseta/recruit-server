@@ -1,6 +1,6 @@
 class QuestionSheetsController < ApplicationController
   before_action :set_question_sheet, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @question_sheets = QuestionSheet.all
   end
@@ -19,7 +19,6 @@ class QuestionSheetsController < ApplicationController
   end
 
   def create
-    byebug
     @question_sheet = QuestionSheet.new(question_sheet_params)
 
     respond_to do |format|
@@ -34,15 +33,16 @@ class QuestionSheetsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @question_sheet.update(question_sheet_params)
-        format.html { redirect_to @question_sheet, notice: 'Form sheet was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question_sheet }
-      else
-        format.html { render :edit }
-        format.json { render json: @question_sheet.errors, status: :unprocessable_entity }
-      end
-    end
+    @question_sheet.update_attributes(question_sheet_params)
+    # respond_to do |format|
+      # if @question_sheet.update(question_sheet_params)
+        # format.html { redirect_to @question_sheet, notice: 'Form sheet was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @question_sheet }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @question_sheet.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   def destroy
@@ -59,7 +59,7 @@ class QuestionSheetsController < ApplicationController
     end
 
     def question_sheet_params
-      params.require(:question_sheet).permit(:title, :content)
+      params.require(:question_sheet).permit(:title, :content, :start_date, :end_date)
     end
     def position_params
       JSON.parse(params.permit(:position)["position"]).transpose()

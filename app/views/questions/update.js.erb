@@ -1,5 +1,5 @@
 
 $('#selectable .ui-selected').removeClass('ui-selected')
 $("#question-<%= @question.id %>").html(`
-    <%= j render "questions/#{@question.type_under}/wrapper", question: @question %>    
+    <%= j render "#{@question.type_under}/wrapper", question: @question %>
 `)

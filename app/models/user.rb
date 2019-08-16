@@ -3,6 +3,10 @@ class User < ApplicationRecord
   belongs_to :team, optional: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  has_many :teams, through: :team_users, source: :team
+  has_many :answer_sheets
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -13,6 +17,13 @@ class User < ApplicationRecord
 
    def captain?(team)
      self == team.team_users&.captain&.first&.user ? true : false
+   end
+
+   def manager?(team)
+     # self.team_users.where(team: team)
+     # #manager.include?(team.team_users.where(user: self)&.first&.role) ? true : false
+     # team.team_users.where(user: self)&.first&.role) ? true : false
+      self.team_users.where("team_id=? and role >= ?", team.id, TeamUser.manager_role_index).present?
    end
 
 end

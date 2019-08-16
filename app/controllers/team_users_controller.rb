@@ -18,8 +18,13 @@ class TeamUsersController < ApplicationController
   end
 
   def change_role
-    @team_user.update_attributes(role: params[:role])
-    redirect_back(fallback_location: root_path)
+    if params[:role] == 'captain'
+      @team_user.update_attributes(role: params[:role])
+      TeamUser.where(user: current_user, team: @team_user.team).first.executive!
+    else
+      @team_user.update_attributes(role: params[:role])
+    end
+    redirect_to team_path(@team_user.team)
   end
 
   def accept

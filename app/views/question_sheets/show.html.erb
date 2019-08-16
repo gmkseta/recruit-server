@@ -27,7 +27,7 @@
 <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
   <% @question_sheet.questions.each do |question| %>
     <div class="card form-sheet-card" id="question-<%= question.id %>">
-      <%= render "questions/#{question.type_under}/show", question: question %>
+      <%= render "#{question.type_under}/show", question: question %>
     </div>
   <% end %>
 
