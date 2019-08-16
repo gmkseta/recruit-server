@@ -14,7 +14,7 @@
     <%= form_with(model: @question_sheet, local: true) do |form| %>
       <div class="form-group shadow-form">
         <%= form.label :title %>
-        <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요" %>        
+        <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요" %>
       </div>
       <div class="form-group shadow-form">
         <%= form.label :content %>
@@ -27,7 +27,9 @@
 <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
   <% @question_sheet.questions.each do |question| %>
     <div class="card form-sheet-card" id="question-<%= question.id %>">
-      <%= render "#{question.type_under}/show", question: question %>
+      <%= form_for question.build_answer do |f| %>
+      <%= render "#{question.type_under}/show", f: f %>
+      <% end  %>
     </div>
   <% end %>
 
@@ -36,10 +38,10 @@
 <script>
   $(document).on("click", ".form-edit", function(){
     $("#question-"+$(this).data('question')).find(".show-wrapper").none();
-    $("#question-"+$(this).data('question')).find(".form-wrapper").block();    
+    $("#question-"+$(this).data('question')).find(".form-wrapper").block();
   })
   $(document).on("click", ".form-show", function(){
     $("#question-"+$(this).data('question')).find(".show-wrapper").block();
-    $("#question-"+$(this).data('question')).find(".form-wrapper").none();    
+    $("#question-"+$(this).data('question')).find(".form-wrapper").none();
   })
 </script>

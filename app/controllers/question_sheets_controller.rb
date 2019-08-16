@@ -1,5 +1,6 @@
 class QuestionSheetsController < ApplicationController
   before_action :set_question_sheet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @question_sheets = QuestionSheet.all

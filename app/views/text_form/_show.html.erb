@@ -18,16 +18,11 @@
     <div class="card-body">
 
       <div class="form-group shadow-form">
-        <% if controller_name == "answer_sheets" %>
           <%= f.label :answerable, "답변" %>
           <%= f.hidden_field :answerable_type, value: "TextForm" %>
           <%= f.fields_for :answerable, TextForm.new do |ff| %>
               <%= ff.text_area :answer ,rows:3, cols:3, class: "form-control", :placeholder => "답변을 입력하세요"%>
           <% end %>
-        <% else %>
-          <textarea class="form-control" cols="3" rows="3" placeholder="답변을 입력하는 공간입니다."></textarea>
-        <% end %>
       </div>
-
     </div>
 </div>

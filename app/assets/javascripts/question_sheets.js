@@ -29,6 +29,8 @@ var JqueryUiInteractions = function() {
         }
     }
 }();
+
+
 var CardsDraggable = function(){
     let index_info = [];
     var _componentSortable = function() {
@@ -81,5 +83,6 @@ var CardsDraggable = function(){
 
 document.addEventListener('DOMContentLoaded', function() {
     CardsDraggable.init();
+
     // JqueryUiInteractions.init();
 });
