@@ -1,49 +1,86 @@
+<div class="d-flex align-items-start flex-column flex-md-row">
+    
+  <!-- left content -->
+  <div class="order-2 order-md-1">
+    
+    <div style="relative" data-spy="scroll" data-target=".sidebar">
+      <div class="card form-sheet-card">
+        <div class="card-header header-elements-inline">
+          <h6 class="card-title">폼 시트를 작성해주세요</h6>
+          <div class="header-elements">
+            <div class="list-icons">
+              <%= link_to "add", question_sheet_questions_path(@question_sheet,{type: "TextForm"}), method: :post, remote: true %>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= form_for(@question_sheet, local: true, id: "question_sheet_form", remote: true) do |form| %>
+            <div class="form-group shadow-form">
+              <%= form.label :title %>
+              <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요", required: true %>
+            </div>
+            <div class="form-group shadow-form">
+              <%= form.label :content %>
+              <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholder: "내용을 입력하세요" %>
+            </div>
+            <div class="form-group shadow-form">
+              <%= form.label :date, "모집 기간" %>
+              <%= text_field_tag :date,  "", class: "form-control daterange-time" %>
 
-
-
-
-<div style="relative" data-spy="scroll" data-target=".sidebar">
-  <div class="card form-sheet-card">
-    <div class="card-header header-elements-inline">
-      <h6 class="card-title">폼 시트를 작성해주세요</h6>
-      <div class="header-elements">
-        <div class="list-icons">
-          <%= link_to "add", question_sheet_questions_path(@question_sheet,{type: "TextForm"}), method: :post, remote: true %>
+            </div>
+            <%= form.submit "저장하기", class: "btn btn-primary", id: "save_btn" %>
+          <% end %>
+          <br>
+          **아래 질문 항목은 자동 저장됩니다.
         </div>
       </div>
-    </div>
-    <div class="card-body">
-      <%= form_for(@question_sheet, local: true, id: "question_sheet_form", remote: true) do |form| %>
-        <div class="form-group shadow-form">
-          <%= form.label :title %>
-          <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요", required: true %>
-        </div>
-        <div class="form-group shadow-form">
-          <%= form.label :content %>
-          <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholder: "내용을 입력하세요" %>
-        </div>
-        <div class="form-group shadow-form">
-          <%= form.label :date, "모집 기간" %>
-          <%= text_field_tag :date,  "", class: "form-control daterange-time" %>
 
-        </div>
-        <%= form.submit "저장하기", class: "btn btn-primary", id: "save_btn" %>
-      <% end %>
-      <br>
-      **아래 질문 항목은 자동 저장됩니다.
+      <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
+
+        <% @question_sheet.questions.each do |question| %>
+          <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>" data-question-id="<%= question.id %>">
+            <%= render "#{question.type_under}/wrapper", question: question %>
+
+          </div>
+        <% end %>
+      </div>
     </div>
+
   </div>
+  <!-- / left content -->
 
-  <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
+  <!-- right content -->
+  <div class="sidebar-sticky w-100 w-md-auto order-1 order-md-2">
+    <div class="sidebar sidebar-light sidebar-component sidebar-component-right sidebar-expand-md" id="sticky_item">
+      <div class="sidebar-content">
+  		
+  		<!-- Navigation -->
+        <div class="card">
+        	<div class="card-header bg-transparent header-elements-inline">
+        		<span class="text-uppercase font-size-sm font-weight-semibold">질문 폼 추가하기</span>
+        		<div class="header-elements">
+        			<div class="list-icons">
+            		<a class="list-icons-item" data-action="collapse"></a>
+          		</div>
+        		</div>
+        	</div>
 
-    <% @question_sheet.questions.each do |question| %>
-      <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>" data-question-id="<%= question.id %>">
-        <%= render "#{question.type_under}/wrapper", question: question %>
+        	<ul class="nav nav-sidebar">
+            <%= link_to question_sheet_questions_path(@question_sheet,{type: "TextForm"}), method: :post, remote: true do %>
+              <li class="nav-item-header">단답형 질문</li>
+            <% end %>
+        		
+            <li class="nav-item-header">장문형 질문</li>
+          </ul>
+        </div>
+        <!-- /navigation -->
 
       </div>
-    <% end %>
+    </div>
   </div>
+  <!-- / right content -->
 </div>
+
 
 <script>
   $(document).on("click", ".form-edit", function(){
@@ -54,6 +91,5 @@
     $("#question-"+$(this).data('question')).find(".show-wrapper").block();
     $("#question-"+$(this).data('question')).find(".form-wrapper").none();
   });
-
-
+  $("#sticky_item").stick_in_parent("parent");
 </script>
