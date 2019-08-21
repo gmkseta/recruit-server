@@ -116,10 +116,54 @@ var DateTimePickers = function() {
 
 
 
+// Setup module
+// ------------------------------
+
+var Scrollspy = function () {
+
+
+    //
+    // Setup module components
+    //
+
+	// Sticky
+    var _componentSticky = function() {
+        if (!$().stick_in_parent) {
+            console.warn('Warning - sticky.min.js is not loaded.');
+            return;
+        }
+
+        // Initialize
+        $('.sidebar-sticky .sidebar').stick_in_parent({
+            offset_top: 20,
+            parent: '.content'
+        });
+
+        // Detach on mobiles
+        $('.sidebar-mobile-component-toggle').on('click', function() {
+            console.log("asd")
+            $('.sidebar-sticky .sidebar').trigger("sticky_kit:detach");
+        });
+    };
+
+
+    //
+    // Return objects assigned to module
+    //
+
+    return {
+        initComponents: function() {
+            _componentSticky();
+        }
+    }
+}();
+
+
 // date time picker end
 
 document.addEventListener('DOMContentLoaded', function() {
     CardsDraggable.init();
     DateTimePickers.init();
+    Scrollspy.initComponents();
     // JqueryUiInteractions.init();
 });

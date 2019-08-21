@@ -1,9 +1,5 @@
 <div class="d-flex align-items-start flex-column flex-md-row">
-    
-  <!-- left content -->
   <div class="order-2 order-md-1">
-    
-    <div style="relative" data-spy="scroll" data-target=".sidebar">
       <div class="card form-sheet-card">
         <div class="card-header header-elements-inline">
           <h6 class="card-title">폼 시트를 작성해주세요</h6>
@@ -44,17 +40,14 @@
           </div>
         <% end %>
       </div>
-    </div>
 
   </div>
-  <!-- / left content -->
 
-  <!-- right content -->
+
+  <!-- Right sidebar component -->
   <div class="sidebar-sticky w-100 w-md-auto order-1 order-md-2">
-    <div class="sidebar sidebar-light sidebar-component sidebar-component-right sidebar-expand-md" id="sticky_item">
+    <div class="sidebar sidebar-light sidebar-component sidebar-component-right sidebar-expand-md">
       <div class="sidebar-content">
-  		
-  		<!-- Navigation -->
         <div class="card">
         	<div class="card-header bg-transparent header-elements-inline">
         		<span class="text-uppercase font-size-sm font-weight-semibold">질문 폼 추가하기</span>
@@ -73,13 +66,15 @@
             <li class="nav-item-header">장문형 질문</li>
           </ul>
         </div>
-        <!-- /navigation -->
-
       </div>
     </div>
-  </div>
-  <!-- / right content -->
+  <!-- /right sidebar component -->
+
 </div>
+<!-- /inner container -->
+
+
+
 
 
 <script>
@@ -91,5 +86,6 @@
     $("#question-"+$(this).data('question')).find(".show-wrapper").block();
     $("#question-"+$(this).data('question')).find(".form-wrapper").none();
   });
-  $("#sticky_item").stick_in_parent("parent");
 </script>
+
+

@@ -24,6 +24,7 @@
 		<script src="/limitless/assets/js/plugins/loaders/blockui.min.js"></script>
 		<script src="/limitless/assets/js/plugins/ui/ripple.min.js"></script>
 		<script src="/limitless/assets/js/plugins/ui/sticky.min.js"></script>
+		<script src="/limitless/assets/js/plugins/ui/prism.min.js"></script>
 		<!-- /core JS files -->
 
 		<!-- Theme JS files -->
@@ -47,8 +48,6 @@
 
 		<script src="/limitless/assets/js/plugins/notifications/pnotify.min.js"></script>
 		<script src="/limitless/assets/js/demo_pages/jqueryui_interactions.js"></script>
-		<!-- /theme JS files -->
-		<script src="/limitless/assets/js/demo_pages/sidebar_secondary.js"></script>
 		<script src="/limitless/assets/js/demo_pages/extra_pnotify.js"></script>
 
 		<%= stylesheet_link_tag    'application', media: 'all' %>
@@ -94,7 +93,6 @@
 				<%= default_yield(:header) %>
 
 				<div class="content">
-					<%= yield(:right_content) %>
 					<%= yield %>
 				</div>
 				<%= default_yield(:footer) %>

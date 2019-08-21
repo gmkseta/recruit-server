@@ -5,15 +5,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :teams, through: :team_users, source: :team
+
   has_many :answer_sheets
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-   def my_team?(team)
-     team_roles = %i( default executive captain )
-     TeamUser.where(user: self, team: team, role: team_roles).present? ? true : false
-   end
+  def my_team?(team)
+    team_roles = %i( default executive captain )
+    TeamUser.where(user: self, team: team, role: team_roles).present? ? true : false
+  end
 
    def captain?(team)
      self == team.team_users&.captain&.first&.user ? true : false
