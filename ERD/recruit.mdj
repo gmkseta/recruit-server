@@ -467,21 +467,6 @@
 									"subViews": [
 										{
 											"_type": "ERDColumnView",
-											"_id": "AAAAAAFsiqqnQofjl+k=",
-											"_parent": {
-												"$ref": "AAAAAAFsiqpBEofU6+o="
-											},
-											"model": {
-												"$ref": "AAAAAAFsiqqnHofgK/o="
-											},
-											"font": "Arial;13;0",
-											"left": 565,
-											"top": 132,
-											"width": 159,
-											"height": 13
-										},
-										{
-											"_type": "ERDColumnView",
 											"_id": "AAAAAAFsiqq7LIfqoVE=",
 											"_parent": {
 												"$ref": "AAAAAAFsiqpBEofU6+o="
@@ -491,7 +476,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 565,
-											"top": 147,
+											"top": 132,
 											"width": 159,
 											"height": 13
 										}
@@ -500,7 +485,7 @@
 									"left": 560,
 									"top": 127,
 									"width": 169,
-									"height": 38
+									"height": 23
 								}
 							],
 							"font": "Arial;13;0",
@@ -1929,15 +1914,6 @@
 					"columns": [
 						{
 							"_type": "ERDColumn",
-							"_id": "AAAAAAFsiqqnHofgK/o=",
-							"_parent": {
-								"$ref": "AAAAAAFsiqpBEofQa7w="
-							},
-							"name": "user_id",
-							"length": 0
-						},
-						{
-							"_type": "ERDColumn",
 							"_id": "AAAAAAFsiqq7B4fn0aA=",
 							"_parent": {
 								"$ref": "AAAAAAFsiqpBEofQa7w="
@@ -2393,6 +2369,41 @@
 						"$ref": "AAAAAAFsiqmCsId50z4="
 					},
 					"name": "TeamUser"
+				},
+				{
+					"_type": "ERDEntity",
+					"_id": "AAAAAAFsmmqcewlkiAo=",
+					"_parent": {
+						"$ref": "AAAAAAFsiqmCsId50z4="
+					},
+					"name": "Role",
+					"columns": [
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFsmmsZXgmDjBY=",
+							"_parent": {
+								"$ref": "AAAAAAFsmmqcewlkiAo="
+							},
+							"name": "name",
+							"length": 0
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFsmmt9xgmMhj8=",
+							"_parent": {
+								"$ref": "AAAAAAFsmmqcewlkiAo="
+							},
+							"name": "Column1"
+						}
+					]
+				},
+				{
+					"_type": "ERDEntity",
+					"_id": "AAAAAAFsmmrqRAlzYHs=",
+					"_parent": {
+						"$ref": "AAAAAAFsiqmCsId50z4="
+					},
+					"name": "Priority"
 				}
 			]
 		}

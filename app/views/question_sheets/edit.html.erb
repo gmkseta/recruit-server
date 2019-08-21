@@ -1,49 +1,48 @@
 
-<div class="card form-sheet-card">
-  <div class="card-header header-elements-inline">
-    <h6 class="card-title">폼 시트를 작성해주세요</h6>
-    <div class="header-elements">
-      <div class="list-icons">
-        <%= link_to "add", question_sheet_questions_path(@question_sheet,{type: "TextForm"}), method: :post, remote: true %>
 
-        <a class="list-icons-item" data-action="collapse"></a>
-        <a class="list-icons-item" data-action="reload"></a>
+
+
+<div style="relative" data-spy="scroll" data-target=".sidebar">
+  <div class="card form-sheet-card">
+    <div class="card-header header-elements-inline">
+      <h6 class="card-title">폼 시트를 작성해주세요</h6>
+      <div class="header-elements">
+        <div class="list-icons">
+          <%= link_to "add", question_sheet_questions_path(@question_sheet,{type: "TextForm"}), method: :post, remote: true %>
+        </div>
       </div>
     </div>
+    <div class="card-body">
+      <%= form_for(@question_sheet, local: true, id: "question_sheet_form", remote: true) do |form| %>
+        <div class="form-group shadow-form">
+          <%= form.label :title %>
+          <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요", required: true %>
+        </div>
+        <div class="form-group shadow-form">
+          <%= form.label :content %>
+          <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholder: "내용을 입력하세요" %>
+        </div>
+        <div class="form-group shadow-form">
+          <%= form.label :date, "모집 기간" %>
+          <%= text_field_tag :date,  "", class: "form-control daterange-time" %>
+
+        </div>
+        <%= form.submit "저장하기", class: "btn btn-primary", id: "save_btn" %>
+      <% end %>
+      <br>
+      **아래 질문 항목은 자동 저장됩니다.
+    </div>
   </div>
-  <div class="card-body">
-    <%= form_for(@question_sheet, local: true, id: "question_sheet_form", remote: true) do |form| %>
-      <div class="form-group shadow-form">
-        <%= form.label :title %>
-        <%= form.text_field :title, class: "form-control", placeholder: "제목을 입력하세요", required: true %>
+
+  <div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
+
+    <% @question_sheet.questions.each do |question| %>
+      <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>" data-question-id="<%= question.id %>">
+        <%= render "#{question.type_under}/wrapper", question: question %>
+
       </div>
-      <div class="form-group shadow-form">
-        <%= form.label :content %>
-        <%= form.text_area :content, class: "form-control" ,rows:3, cols:3, placeholder: "내용을 입력하세요" %>
-      </div>
-      <div class="form-group shadow-form">
-        <%= form.label :start_date %>
-        <%= form.datetime_field :start_date, class: "", required: true %>
-      </div>
-      <div class="form-group shadow-form">
-        <%= form.label :end_date %>
-        <%= form.datetime_field :end_date, class: "", required: true %>
-      </div>
-      <%= form.submit "저장하기", class: "btn btn-primary", id: "save_btn" %>
     <% end %>
-    <br>
-    **아래 질문 항목은 자동 저장됩니다.
   </div>
-</div>
-
-<div class="selectable-card-list row-sortable" style="width: 100%" id="question-wrapper">
-
-  <% @question_sheet.questions.each do |question| %>
-    <div class="card form-sheet-card sortable-card" id="question-<%= question.id %>" data-question-id="<%= question.id %>">
-      <%= render "#{question.type_under}/wrapper", question: question %>
-
-    </div>
-  <% end %>
 </div>
 
 <script>
