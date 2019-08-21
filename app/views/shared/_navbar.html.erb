@@ -13,6 +13,16 @@
         <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
             <i class="icon-paragraph-justify3"></i>
         </button>
+        
+        <!-- question sheet mobile navigation -->
+        <% if controller_name == 'question_sheets' && action_name == 'edit' %>
+          <button class="navbar-toggler sidebar-mobile-component-toggle" type="button">
+            <i class="icon-unfold"></i>
+          </button>
+        <% end %>
+        <!-- / question sheet mobile navigation -->
+        
+        
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-mobile">

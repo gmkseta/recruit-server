@@ -500,7 +500,7 @@
 									"left": 536,
 									"top": 135,
 									"width": 169,
-									"height": 38
+									"height": 23
 								}
 							],
 							"font": "Arial;13;0",
@@ -2010,15 +2010,6 @@
 						}
 					],
 					"columns": [
-						{
-							"_type": "ERDColumn",
-							"_id": "AAAAAAFsiqqnHofgK/o=",
-							"_parent": {
-								"$ref": "AAAAAAFsiqpBEofQa7w="
-							},
-							"name": "user_id",
-							"length": 0
-						},
 						{
 							"_type": "ERDColumn",
 							"_id": "AAAAAAFsiqq7B4fn0aA=",

@@ -38,8 +38,9 @@ class QuestionSheetsController < ApplicationController
     end
 
     def question_sheet_params
-      params.require(:question_sheet).permit(:title, :content, :start_date, :end_date)
+      params.require(:question_sheet).permit(:title, :content).merge(start_date: params[:date].split(" - ")[0], end_date: params[:date].split(" - ")[1])
     end
+    
     def position_params
       JSON.parse(params.permit(:position)["position"]).transpose()
     end

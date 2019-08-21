@@ -81,8 +81,45 @@ var CardsDraggable = function(){
     }
 }();
 
+
+
+// date time picker
+var DateTimePickers = function() {
+    // Daterange picker
+    var _componentDaterange = function() {
+        if (!$().daterangepicker) {
+            console.warn('Warning - daterangepicker.js is not loaded.');
+            return;
+        }
+
+        // Display time picker
+        $('.daterange-time').daterangepicker({
+            timePicker: true,
+            applyClass: 'bg-slate-600',
+            cancelClass: 'btn-light',
+            locale: {
+                format: 'MM/DD/YYYY h:mm a'
+            }
+        });
+
+    };
+
+    return {
+        init: function() {
+            _componentDaterange();
+            // _componentPickadate();
+            // _componentPickatime();
+            // _componentAnytime();
+        }
+    }
+}();
+
+
+
+// date time picker end
+
 document.addEventListener('DOMContentLoaded', function() {
     CardsDraggable.init();
-
+    DateTimePickers.init();
     // JqueryUiInteractions.init();
 });

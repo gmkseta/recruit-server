@@ -20,4 +20,3 @@ $.fn.none = function(){
 $.fn.block = function(){
     this.css('display', 'block')
 }
-  
