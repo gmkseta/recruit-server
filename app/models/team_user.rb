@@ -23,14 +23,4 @@ class TeamUser < ApplicationRecord
     TeamUser::ROLES.index(:executive)
   end
 
-  # def make_role_arr
-  #   case self.role
-  #   when 'captain'
-  #     ['captain', 'executive', 'default']
-  #   when 'executive'
-  #     ['executive', 'default']
-  #   when 'default'
-  #   end
-  # end
-
 end
