@@ -1,0 +1,11 @@
+<li class="nav-item nav-item-submenu">
+    <a href="#" class="nav-link"><i class="icon-copy"></i> <span>팀 관리</span></a>
+
+    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+      <% @teams_hash.each do |_name, _path| %>
+        <li class="nav-item">
+          <%= link_to _name, _path, class: "nav-link #{request.env['PATH_INFO'] == _path ? "active" : ""}" %>
+        </li>    
+      <% end %>  
+    </ul>
+</li>
