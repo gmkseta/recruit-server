@@ -31,6 +31,7 @@
                       <% end %>
                     </a>
                     
+                    <h4 class="mb-0 text-white text-shadow-dark"><%= current_user&.team.name %></h4>
                     <h6 class="mb-0 text-white text-shadow-dark"><%= current_user.name %></h6>
                     <span class="font-size-sm text-white text-shadow-dark"><%= current_user.email %></span>
                     
@@ -62,10 +63,10 @@
                     
                     <li class="nav-item nav-item-submenu">
                         <a href="#" class="nav-link">현재 팀 채널</a>
-                        <% if @my_teams.present? %>
-                          <% @my_teams.each do |name, team| %>
+                        <% if @my_teams_hash.present? %>
+                          <% @my_teams_hash.each do |name, team| %>
                             <ul class="nav nav-group-sub">
-                                <%= link_to name, "/teams/#{team.id}/change", class: "nav-link #{current_user.team == team ? "bg-primary" : "bg-secondary"}" %>
+                                <%= link_to name, change_team_path(team), class: "nav-link #{current_user.team == team ? "bg-primary" : "bg-secondary"}" %>
                             </ul>
                           <% end %>
                         <% end %>

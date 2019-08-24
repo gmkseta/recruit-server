@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :load_sidebar_hash, :load_my_teams
+  before_action :load_sidebar_hash
 
   #추가
   def configure_permitted_parameters
@@ -12,19 +12,6 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def load_my_teams
-    if current_user
-      teams = TeamUser.where(user: current_user, role: TeamUser::TEAM_MEMBERS).pluck(:team_id)
-      @my_teams = {}
-      teams.each do |team_id|
-        team = Team.find(team_id)
-        @my_teams[team.name] = team
-      end
-      
-      
-    end
-  end
-  
   # sidebar 에 필요한 hash load
   def load_sidebar_hash
     if current_user
@@ -35,7 +22,7 @@ class ApplicationController < ActionController::Base
       
       teams.each do |team_id|
         team = Team.find(team_id)
-        @my_teams_hash[team.name] = team_path(team_id)
+        @my_teams_hash[team.name] = team
       end
       
       apply_teams.each do |team_id|

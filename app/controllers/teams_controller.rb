@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
 
   def change
     current_user.update_attributes(team: @team)
-    redirect_to teams_path(@team), notice: "#{@team.name} 팀으로 바뀌었습니다."
+    redirect_to team_path(@team), notice: "#{@team.name} 팀으로 바뀌었습니다."
   end
   
   private

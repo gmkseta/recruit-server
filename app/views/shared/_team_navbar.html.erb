@@ -8,8 +8,8 @@
         <li class="nav-item nav-item-submenu">
             <a href="#" class="nav-link">나의 소속 팀</a>
             <ul class="nav nav-group-sub">
-              <% path.each do |_name, _path| %>
-                <%= link_to _name, _path, class: "nav-link" %>
+              <% path.each do |_name, _team| %>
+                <%= link_to _name, team_path(_team), class: "nav-link" %>
               <% end %>
             </ul>
         </li>
@@ -17,8 +17,8 @@
           <li class="nav-item nav-item-submenu">
             <a href="#" class="nav-link">나의 지원 팀</a>
             <ul class="nav nav-group-sub">
-              <% path.each do |_name, _path| %>
-                <%= link_to _name, _path, class: "nav-link" %>
+              <% path.each do |_name, _team| %>
+                <%= link_to _name, team_path(_team), class: "nav-link" %>
               <% end %>
             </ul>
           </li>
