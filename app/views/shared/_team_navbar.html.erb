@@ -4,7 +4,7 @@
     <ul class="nav nav-group-sub">
 
       <% @teams_hash.each do |name, path| %>
-        <% if path == @my_teams %>
+        <% if path == @my_teams_hash %>
         <li class="nav-item nav-item-submenu">
             <a href="#" class="nav-link">나의 소속 팀</a>
             <ul class="nav nav-group-sub">
@@ -13,7 +13,7 @@
               <% end %>
             </ul>
         </li>
-        <% elsif (path == @my_apply_teams) && @my_apply_teams.present? %>
+        <% elsif (path == @my_apply_teams_hash) && @my_apply_teams_hash.present? %>
           <li class="nav-item nav-item-submenu">
             <a href="#" class="nav-link">나의 지원 팀</a>
             <ul class="nav nav-group-sub">
