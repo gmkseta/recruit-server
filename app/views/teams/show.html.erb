@@ -55,7 +55,9 @@
                           <% if team_user.get_role_index(role) <= @current_team_user.get_role_index(@current_team_user.role) %>
                             <%= link_to "#{role.upcase}", change_role_team_user_path(team_user, role: role), class: "role-button dropdown-item #{role.to_s == team_user.role.to_s ? "bg-#{team_user.make_color}" : "" }", id: "team_user_#{team_user.id}_role_#{role}" %>
                           <% end %>
+                          
                         <% end %>
+                        <%= link_to '삭제', team_user_path, method: :delete, class: "role-button dropdown-item", style: "color: red;", data: {confirm: "정말로 팀원을 삭제하시겠습니까?"} %>
                     </div>
                   <% end %>
                 <% else %>
