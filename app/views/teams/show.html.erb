@@ -45,18 +45,21 @@
 
               <div class="align-self-center ml-3 dropdown">
                 <span class="btn btn-<%= team_user.make_color %> dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= team_user.role %></span>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <% if current_user != team_user.user %>
-                  <!-- 본인보다 낮은 role만 변경 가능하게 해야 함 -->
-                    <% TeamUser::TEAM_MEMBERS.reverse.each do |role| %>
-                      <%= link_to "#{role.upcase}", change_role_team_user_path(team_user, role: role), class: "role-button dropdown-item #{role.to_s == team_user.role.to_s ? "bg-#{team_user.make_color}" : "" }", id: "team_user_#{team_user.id}_role_#{role}" %>
-                    <% end %>
-                  <% else %>
-                    <a href="" class="role-button dropdown-item">본인 계정입니다.</a>
+                <% if current_user != user %>
+                  <% if team_user.get_role_index(team_user.role) < @current_team_user.get_role_index(@current_team_user.role) %>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <% TeamUser::TEAM_MEMBERS.reverse.each do |role| %>
+                          <% if team_user.get_role_index(role) <= @current_team_user.get_role_index(@current_team_user.role) %>
+                            <%= link_to "#{role.upcase}", change_role_team_user_path(team_user, role: role), class: "role-button dropdown-item #{role.to_s == team_user.role.to_s ? "bg-#{team_user.make_color}" : "" }", id: "team_user_#{team_user.id}_role_#{role}" %>
+                          <% end %>
+                        <% end %>
+                    </div>
                   <% end %>
-                </div>
-
+                <% else %>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a href="" class="role-button dropdown-item">본인 계정입니다.</a>
+                  </div>
+                <% end %>
               </div>
 
 
