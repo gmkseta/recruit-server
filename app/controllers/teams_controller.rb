@@ -14,6 +14,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.create!(team_params)
     TeamUser.create!(team: @team, user: current_user, role: :captain)
+    current_user.update_attributes(team: @team)
     redirect_to team_path(@team)
   end
 
