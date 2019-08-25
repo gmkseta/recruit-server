@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teams
+  resources :teams do
+    member do
+      get :change
+    end
+  end
 
   resources :team_users do
     collection do

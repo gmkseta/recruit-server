@@ -1,0 +1,32 @@
+<li class="nav-item nav-item-submenu">
+    <a href="#" class="nav-link"><i class="icon-copy"></i> <span>팀 관리</span></a>
+
+    <ul class="nav nav-group-sub">
+
+      <% @teams_hash.each do |name, path| %>
+        <% if path == @my_teams_hash %>
+        <li class="nav-item nav-item-submenu">
+            <a href="#" class="nav-link">나의 소속 팀</a>
+            <ul class="nav nav-group-sub">
+              <% path.each do |_name, _team| %>
+                <%= link_to _name, team_path(_team), class: "nav-link" %>
+              <% end %>
+            </ul>
+        </li>
+        <% elsif (path == @my_apply_teams_hash) && @my_apply_teams_hash.present? %>
+          <li class="nav-item nav-item-submenu">
+            <a href="#" class="nav-link">나의 지원 팀</a>
+            <ul class="nav nav-group-sub">
+              <% path.each do |_name, _team| %>
+                <%= link_to _name, team_path(_team), class: "nav-link" %>
+              <% end %>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to name, path, class: "nav-link #{request.env['PATH_INFO'] == path ? "active" : ""}" %>
+          </li>    
+        <% end %>
+      <% end %>  
+    </ul>
+</li>

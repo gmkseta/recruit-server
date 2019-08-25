@@ -12,7 +12,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def my_team?(team)
-    team_roles = %i( default executive captain )
+    team_roles = TeamUser::TEAM_MEMBERS
     TeamUser.where(user: self, team: team, role: team_roles).present? ? true : false
   end
 

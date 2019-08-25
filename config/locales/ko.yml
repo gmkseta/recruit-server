@@ -1,4 +1,7 @@
 ko:
+  attributes:
+    name: 이름
+    phone: 전화번호
   activerecord:
     errors:
       messages:
